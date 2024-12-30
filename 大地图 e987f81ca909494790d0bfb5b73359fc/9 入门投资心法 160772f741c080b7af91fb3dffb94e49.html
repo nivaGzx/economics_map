@@ -1,0 +1,689 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>9 入门投资心法</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="160772f7-41c0-80b7-af91-fb3dffb94e49" class="page sans"><header><h1 class="page-title">9 入门投资心法</h1><p class="page-description"></p></header><div class="page-body"><h3 id="160772f7-41c0-807f-b07f-fa21bc048f40" class=""><strong>9.1 入门配置心法</strong></h3><ul id="160772f7-41c0-8014-ba3d-c640fb1f7340" class="bulleted-list"><li style="list-style-type:disc"><strong>巴菲特赌局</strong><br/>巴菲特曾以50万美元对赌华尔街，结果只投资标普500指数基金，最终跑赢多数专业投资者。这一赌局显示了指数基金的长期稳定性。<br/></li></ul><h3 id="160772f7-41c0-8076-ae39-f06ed480d44b" class=""><strong>9.2 指数基金的跑赢原理</strong></h3><ul id="160772f7-41c0-806d-be42-deb32c551090" class="bulleted-list"><li style="list-style-type:disc"><strong>指数基金≠指数</strong><p id="160772f7-41c0-8051-8cd2-f3ca36f962b9" class="">指数基金追踪某一指数的表现，但其本质上是通过投资于指数内的成分股实现增长。</p></li></ul><ul id="160772f7-41c0-80be-9086-e5996f768572" class="bulleted-list"><li style="list-style-type:disc"><strong>股票分化现象</strong><p id="160772f7-41c0-804e-bfa2-e88ef694f40b" class="">数据显示，只有少数股票能够为市场带来主要收益：</p><ul id="160772f7-41c0-8003-8a45-dc07db5d0909" class="bulleted-list"><li style="list-style-type:circle"><strong>十年年化收益对比：</strong><table id="160772f7-41c0-8092-a5c5-d8daf87cd575" class="simple-table"><tbody><tr id="160772f7-41c0-8021-a0ad-c63c90da66bb"><td id="_Rke" class="">分类</td><td id="ZuVp" class="">年化收益</td></tr><tr id="160772f7-41c0-8068-9511-f11672f80692"><td id="_Rke" class="">科创板整体</td><td id="ZuVp" class="">7.7%</td></tr><tr id="160772f7-41c0-8082-bb58-ec642a2fb42a"><td id="_Rke" class="">前3名</td><td id="ZuVp" class="">45%</td></tr><tr id="160772f7-41c0-805f-ac7f-d599c1daa168"><td id="_Rke" class="">前20名</td><td id="ZuVp" class="">20%</td></tr><tr id="160772f7-41c0-80cb-8117-c352828080ae"><td id="_Rke" class="">后80名</td><td id="ZuVp" class="">0.6%</td></tr></tbody></table></li></ul><ul id="160772f7-41c0-807d-96ee-ec018e6a52cb" class="bulleted-list"><li style="list-style-type:circle"><strong>头部股票的盈利能力：</strong><ul id="160772f7-41c0-8034-9b3d-cc7f9aa17d02" class="bulleted-list"><li style="list-style-type:square"><strong>全A股</strong>：前3%的公司盈利总和等于其他所有公司的总和。</li></ul><ul id="160772f7-41c0-809d-9d6a-ff8a99707661" class="bulleted-list"><li style="list-style-type:square"><strong>全美股</strong>：前4%的公司盈利总和等于其他所有公司的总和。</li></ul></li></ul></li></ul><ul id="160772f7-41c0-807b-8210-fd833be95c5b" class="bulleted-list"><li style="list-style-type:disc"><strong>指数基金优势分析：</strong><ol type="1" id="160772f7-41c0-807c-8ad9-e4de4bad708f" class="numbered-list" start="1"><li><strong>头部效应</strong><br/>指数基金优先捕捉市场中最优秀的头部公司，利用头部企业的持续盈利能力获得收益。<br/></li></ol><ol type="1" id="160772f7-41c0-80de-a0cc-d06d32f43619" class="numbered-list" start="2"><li><strong>持仓效应</strong><br/>稳定持有成分股，避免因市场波动导致的“高买低卖”行为，抵御散户投资的非理性操作。<br/></li></ol><ol type="1" id="160772f7-41c0-8063-997f-d80d149e92f2" class="numbered-list" start="3"><li><strong>分散效应</strong><br/>分散投资于多个成分股，有效降低个股风险，提高整体收益的稳定性。<br/></li></ol></li></ul><p id="160772f7-41c0-80ac-826b-cba95472fe0d" class="">
+</p><h3 id="160772f7-41c0-80a3-acd8-f90ffb2fbbaa" class=""><strong>9.3 如何选择指数基金</strong></h3><p id="160772f7-41c0-8031-9bbe-d44f87b7166e" class=""><div class="indented"><h3 id="160772f7-41c0-8022-aea9-f36d6bc9e934" class=""><strong>宽基 vs. 行业基金</strong></h3></div></p><ul id="160772f7-41c0-809c-a90e-d9cd09d68b50" class="bulleted-list"><li style="list-style-type:disc"><strong>宽基指数基金</strong><br/>投资于整体市场，风险较低，适合长期稳健投资。<br/><ul id="160772f7-41c0-801e-bfa3-d13db5a18712" class="bulleted-list"><li style="list-style-type:circle"><strong>行业指数基金</strong><br/>投资于特定行业（如消费、新能源），收益与风险较高，适合作为补充投资。<br/></li></ul><h3 id="160772f7-41c0-80dc-b18a-ea74f3b3ad9e" class=""><strong>资产配置建议</strong></h3><ul id="160772f7-41c0-80f3-a4b3-d0f7a5f5be5d" class="bulleted-list"><li style="list-style-type:circle"><strong>80%底仓</strong>：选择宽基指数基金，如沪深300，用于长期稳健增长。</li></ul><ul id="160772f7-41c0-807f-920e-c707c67ebf39" class="bulleted-list"><li style="list-style-type:circle"><strong>20%卫星仓</strong>：选择行业指数基金，如消费、新能源，捕捉行业高增长机会。</li></ul><h3 id="160772f7-41c0-8099-9972-f57f6740af2b" class=""><strong>主要指数基金对比</strong></h3><table id="160772f7-41c0-809f-8390-ce7a7c18a5c6" class="simple-table"><tbody><tr id="160772f7-41c0-8024-83aa-e466aac23548"><td id="ghZM" class="">指数</td><td id="sdFZ" class="">3年收益</td><td id="MWKW" class="">5年收益</td><td id="CkO]" class="">10年收益</td></tr><tr id="160772f7-41c0-8069-a785-f3768ee36677"><td id="ghZM" class="">沪深300</td><td id="sdFZ" class="">12.67%</td><td id="MWKW" class="">16.92%</td><td id="CkO]" class="">55.38%</td></tr><tr id="160772f7-41c0-80e0-a877-fbe6aaa544db"><td id="ghZM" class="">中证500</td><td id="sdFZ" class="">23.75%</td><td id="MWKW" class="">6.48%</td><td id="CkO]" class="">61.94%</td></tr><tr id="160772f7-41c0-80e9-87ca-f1d358684879"><td id="ghZM" class="">中证1000</td><td id="sdFZ" class="">20.78%</td><td id="MWKW" class="">-8.17%</td><td id="CkO]" class="">65.29%</td></tr></tbody></table><ul id="160772f7-41c0-8046-880d-fdaa493c9275" class="bulleted-list"><li style="list-style-type:circle"><strong>沪深300</strong>：由市值排名前300的大盘公司构成，风险较低，收益稳定。</li></ul><ul id="160772f7-41c0-801c-8651-cdf83ebcf94b" class="bulleted-list"><li style="list-style-type:circle"><strong>中证500</strong>：由排名300-800的中盘成长型公司构成，平衡稳定性和成长性。</li></ul><ul id="160772f7-41c0-80f0-96eb-cf1d1b1be257" class="bulleted-list"><li style="list-style-type:circle"><strong>中证1000</strong>：由排名800-1800的小盘公司构成，波动性高，风险较大。</li></ul><h3 id="160772f7-41c0-80f7-9e72-d588e51d37a6" class=""><strong>各指数的特点</strong></h3><ol type="1" id="160772f7-41c0-80ff-adb8-d1853da38ce7" class="numbered-list" start="1"><li><strong>沪深300（大盘股）</strong><ul id="160772f7-41c0-80b1-8990-d13c51db11fb" class="bulleted-list"><li style="list-style-type:disc"><strong>特质</strong>：<ol type="1" id="160772f7-41c0-8028-9ab6-db46b66e1162" class="numbered-list" start="1"><li><strong>高估值回归</strong>：估值过高时，收益受限。</li></ol><ol type="1" id="160772f7-41c0-8008-ad2e-d8365f88c5dd" class="numbered-list" start="2"><li><strong>高成长进入</strong>：新增优质成长型公司时有利。</li></ol></li></ul><ul id="160772f7-41c0-807e-b10d-e52c6f9c0e96" class="bulleted-list"><li style="list-style-type:disc"><strong>适合</strong>：追求稳定收益的投资者。</li></ul></li></ol><ol type="1" id="160772f7-41c0-805c-b4b9-c936ba3deb93" class="numbered-list" start="2"><li><strong>中证500（中小盘成长）</strong><ul id="160772f7-41c0-80d8-b5f7-fb6a6cc7f7fc" class="bulleted-list"><li style="list-style-type:disc"><strong>特质</strong>：<ol type="1" id="160772f7-41c0-8052-80d3-ea50fb5f5800" class="numbered-list" start="1"><li><strong>有出有进</strong>：定期调整成分股，有利于捕捉成长股。</li></ol></li></ul><ul id="160772f7-41c0-80b8-b33c-de27f318a595" class="bulleted-list"><li style="list-style-type:disc"><strong>适合</strong>：希望在稳定中寻找一定成长性的投资者。</li></ul></li></ol><ol type="1" id="160772f7-41c0-805f-b3dd-c648c9be7a00" class="numbered-list" start="3"><li><strong>中证1000（小盘股）</strong><ul id="160772f7-41c0-8045-809b-c9e6010abbc6" class="bulleted-list"><li style="list-style-type:disc"><strong>特质</strong>：波动较大，收益不确定性高，不建议作为核心投资品种。</li></ul></li></ol><h3 id="160772f7-41c0-80b8-8ff1-dc0d3b9954b1" class=""><strong>选择策略总结</strong></h3><ul id="160772f7-41c0-8044-a546-e0b7d5e7f6fd" class="bulleted-list"><li style="list-style-type:circle"><strong>核心配置</strong>：优先选择宽基指数基金（如沪深300、中证500），保证稳健收益。</li></ul><ul id="160772f7-41c0-80b3-be77-ea9803227a12" class="bulleted-list"><li style="list-style-type:circle"><strong>适度尝试</strong>：行业指数基金可作为补充，抓住潜在高增长机会。</li></ul><ul id="160772f7-41c0-80e8-91b7-d1cec5171d0e" class="bulleted-list"><li style="list-style-type:circle"><strong>规避高波动</strong>：不建议将高波动的指数（如中证1000）作为主要配置。</li></ul></li></ul><p id="160772f7-41c0-800a-b5e4-ea51ca5f1079" class="">
+</p><p id="160772f7-41c0-80f1-83f9-d686d19fb08b" class="">
+</p><h3 id="160772f7-41c0-80c7-b767-f03e5aebc434" class=""><strong>9.4 红利指数基金</strong></h3><p id="160772f7-41c0-808a-9526-e4560a132e37" class=""><div class="indented"><h3 id="160772f7-41c0-8048-bf82-c132f9140355" class=""><strong>红利指数的底层逻辑</strong></h3><ul id="160772f7-41c0-80e9-8002-cf72679ece9c" class="bulleted-list"><li style="list-style-type:disc">红利指数投资于市场中<strong>股息率最高</strong>且<strong>流动性良好</strong>的前100家公司。</li></ul><h3 id="160772f7-41c0-80aa-8ceb-e492e226efc2" class=""><strong>为什么值得投资？</strong></h3><ol type="1" id="160772f7-41c0-8034-b5ae-e6658465a973" class="numbered-list" start="1"><li><strong>政策背景支持</strong><ul id="160772f7-41c0-8041-a90b-d1dfb9b78337" class="bulleted-list"><li style="list-style-type:disc"><strong>央行目标</strong>：金融市场稳定，长期利好高分红企业。</li></ul><ul id="160772f7-41c0-808f-9bc8-da644f517852" class="bulleted-list"><li style="list-style-type:disc"><strong>国家政策</strong>：推动“共同富裕”，支持高股息稳定收益。</li></ul></li></ol><ol type="1" id="160772f7-41c0-8075-91ff-e2e144c831ec" class="numbered-list" start="2"><li><strong>企业逻辑</strong>：<ul id="160772f7-41c0-8028-b993-db528b2b5b46" class="bulleted-list"><li style="list-style-type:disc">龙头企业逐步垄断，产生盈余用于收购上下游企业，横向扩张可能影响金融市场稳定。</li></ul><ul id="160772f7-41c0-80e7-bf30-c152e278d198" class="bulleted-list"><li style="list-style-type:disc">股票作为资产，核心收益应包括<strong>资产性收入</strong>（股利）而非仅依赖价格差波动。</li></ul></li></ol><ol type="1" id="160772f7-41c0-8039-b435-d5851f8a440e" class="numbered-list" start="3"><li><strong>投资价值</strong>：<ul id="160772f7-41c0-80dc-9472-c8a870a62fb8" class="bulleted-list"><li style="list-style-type:disc"><strong>高分红</strong>：降低企业估值，提供稳定的现金流回报，维护市场稳定性。</li></ul><figure id="160772f7-41c0-804b-bb18-e7a85b4ada75" class="image"><a href="9%20%E5%85%A5%E9%97%A8%E6%8A%95%E8%B5%84%E5%BF%83%E6%B3%95%20160772f741c080b7af91fb3dffb94e49/image.png"><img style="width:707.96875px" src="9%20%E5%85%A5%E9%97%A8%E6%8A%95%E8%B5%84%E5%BF%83%E6%B3%95%20160772f741c080b7af91fb3dffb94e49/image.png"/></a></figure></li></ol><hr id="160772f7-41c0-8035-8bd9-d8a15bdf8162"/><h3 id="160772f7-41c0-80a2-887d-fbb97a3e5aa0" class=""><strong>配置建议</strong></h3><p id="160772f7-41c0-8032-b05f-cc95e20b037b" class="">结合红利指数和其他稳健指数，建议如下：</p><ol type="1" id="160772f7-41c0-8064-a7cf-cac3a7e538fd" class="numbered-list" start="1"><li><strong>沪深300</strong>：大盘稳定增长。</li></ol><ol type="1" id="160772f7-41c0-807d-957e-e5adaae25c55" class="numbered-list" start="2"><li><strong>中证500</strong>：平衡成长与稳健。</li></ol><ol type="1" id="160772f7-41c0-805c-b0f0-fe990a3ae6a6" class="numbered-list" start="3"><li><strong>红利指数</strong>：长期资产性收入。</li></ol><h3 id="160772f7-41c0-80a3-9c76-c2f822fce1ee" class=""><strong>投资方式</strong></h3><ol type="1" id="160772f7-41c0-8022-9bc5-e5a7529ba2d2" class="numbered-list" start="1"><li><strong>傻瓜买入</strong>：长期持有，享受稳定分红。</li></ol><ol type="1" id="160772f7-41c0-801f-ac4a-dc5d7cce2a61" class="numbered-list" start="2"><li><strong>定投</strong>：平滑市场波动，积累复利收益。</li></ol><ol type="1" id="160772f7-41c0-80ee-998b-e57d3f13ef55" class="numbered-list" start="3"><li><strong>择时</strong>：根据市场估值，逢低布局，优化收益。</li></ol><hr id="160772f7-41c0-8093-aad6-f34265a52c4f"/><p id="160772f7-41c0-80d8-a048-d6ab00b20957" class=""><strong>总结</strong>：红利指数基金适合作为长期稳健资产，搭配沪深300与中证500进行资产配置，可实现稳健增长与分红收益双重目标。</p></div></p><p id="160772f7-41c0-80b6-9df1-c237ee102408" class="">
+</p><p id="160772f7-41c0-8063-9e1d-d840fb3a4db2" class="">
+</p><h3 id="160772f7-41c0-80b3-931b-d571cbeb567d" class=""><strong>9.5 基金定投策略</strong></h3><p id="160772f7-41c0-80c6-9229-e0a638298bd2" class=""><div class="indented"><h3 id="160772f7-41c0-806a-98b4-fe66461adba3" class=""><strong>什么是定投（定期定额）？</strong></h3><ul id="160772f7-41c0-80f9-b7d7-eb2ff19d5c74" class="bulleted-list"><li style="list-style-type:disc">定投是指在固定时间（如每月、每周）投资固定金额到基金中。<ul id="160772f7-41c0-80bf-82a2-c64dba4db30f" class="bulleted-list"><li style="list-style-type:circle"><strong>核心优势</strong>：<ol type="1" id="160772f7-41c0-808b-af1e-f14b916b612d" class="numbered-list" start="1"><li><strong>被动择时</strong>：避免因追涨杀跌导致投资失败。</li></ol><ol type="1" id="160772f7-41c0-8091-9376-fc5446cb09cd" class="numbered-list" start="2"><li><strong>降低持仓成本</strong>：市场低点时买入更多份额，平滑长期成本。</li></ol></li></ul></li></ul><hr id="160772f7-41c0-802b-8ffd-ddc9ace1b683"/><h3 id="160772f7-41c0-8058-a185-eade0fc5073b" class=""><strong>案例分析：2015年市场波动数据</strong></h3><ul id="160772f7-41c0-80d3-991d-db5ddc05af17" class="bulleted-list"><li style="list-style-type:disc"><strong>市场背景</strong>：<ul id="160772f7-41c0-80a8-88d4-d98c5639c8f5" class="bulleted-list"><li style="list-style-type:circle">2015年Q2市场达到新高，但Q3下跌28.4%，导致申购量减少，赎回量增加；Q4市场反弹大涨。</li></ul></li></ul><ul id="160772f7-41c0-807d-9e07-c199f5ba4a9a" class="bulleted-list"><li style="list-style-type:disc"><strong>基金收益对比</strong>：<table id="160772f7-41c0-80fc-9aa1-f1fdd9cab1b9" class="simple-table"><tbody><tr id="92ea536d-fc38-4a1d-b619-7578d6af2efd"><td id="L|Q}" class="">基金</td><td id="Fsn}" class="" style="width:120px">Y1</td><td id="Tj|[" class="">Y2</td><td id="]eY?" class="">Y3</td><td id="EI&lt;_" class="">收益</td></tr><tr id="94039af1-9f76-4eca-8391-7891b3502994"><td id="L|Q}" class="">A</td><td id="Fsn}" class="" style="width:120px">100</td><td id="Tj|[" class="">110</td><td id="]eY?" class="">120</td><td id="EI&lt;_" class="">120</td></tr><tr id="0767e9d2-00b0-474e-a259-1c361792f1c0"><td id="L|Q}" class="">B</td><td id="Fsn}" class="" style="width:120px">100</td><td id="Tj|[" class="">75</td><td id="]eY?" class="">100</td><td id="EI&lt;_" class="">100</td></tr><tr id="3b0c7e27-4460-48b8-bddd-9cec8df4c310"><td id="L|Q}" class="">定投A</td><td id="Fsn}" class="" style="width:120px">100</td><td id="Tj|[" class="">100</td><td id="]eY?" class=""></td><td id="EI&lt;_" class="">229</td></tr><tr id="cb105438-aed3-4baf-87c2-74889138fa76"><td id="L|Q}" class="">定投B</td><td id="Fsn}" class="" style="width:120px">100</td><td id="Tj|[" class="">100</td><td id="]eY?" class=""></td><td id="EI&lt;_" class="">233</td></tr></tbody></table></li></ul><p id="160772f7-41c0-8053-bb59-c229d5095ab3" class=""><strong>结果</strong>：</p><p id="160772f7-41c0-8080-be83-ecaf5636529e" class="">定投策略在市场下跌期间持续买入，最终收益高于一次性买入。</p><hr id="160772f7-41c0-809f-bd26-c3073e1cc38b"/><h3 id="160772f7-41c0-8097-b67d-d80dd92c9021" class=""><strong>定投方法</strong></h3><ol type="1" id="160772f7-41c0-8055-a1d0-cfda0e6732d5" class="numbered-list" start="1"><li><strong>投资周期</strong><ul id="160772f7-41c0-8035-9f9a-e1888f90dd70" class="bulleted-list"><li style="list-style-type:disc"><strong>时间</strong>：3-10年，至少保证3-5年投资周期，才能平滑市场波动，实现长期复利增长。</li></ul></li></ol><ol type="1" id="160772f7-41c0-8000-a0b7-f3c9310dd77c" class="numbered-list" start="2"><li><strong>投资频率</strong><ul id="160772f7-41c0-80c5-9e5f-cae46ace4b9d" class="bulleted-list"><li style="list-style-type:disc">每周或每月定投，保持投资纪律性。</li></ul></li></ol><ol type="1" id="160772f7-41c0-809e-bcae-f8bc71545da6" class="numbered-list" start="3"><li><strong>金额固定</strong><ul id="160772f7-41c0-80eb-9b2e-dee0191f935d" class="bulleted-list"><li style="list-style-type:disc">每次投入固定金额，避免临时减少投资金额，保证定投效果。</li></ul></li></ol><hr id="160772f7-41c0-8013-906b-caa81d1fcc34"/><p id="160772f7-41c0-80bd-a95f-e3edd8bfadca" class=""><strong>总结</strong>：基金定投是一种稳健的长期投资策略，能够通过分散买入时点、降低成本，实现复利增长。核心在于<strong>长期坚持</strong>、<strong>固定投入</strong>，不受市场短期波动干扰。</p></div></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

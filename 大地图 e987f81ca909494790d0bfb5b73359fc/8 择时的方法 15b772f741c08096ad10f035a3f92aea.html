@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>8 择时的方法</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="15b772f7-41c0-8096-ad10-f035a3f92aea" class="page sans"><header><h1 class="page-title">8 择时的方法</h1><p class="page-description"></p></header><div class="page-body"><h2 id="15b772f7-41c0-8095-941a-c91621c05725" class="">8.1 为什么要择时</h2><ol type="1" id="15b772f7-41c0-8001-b3ac-dc482d86a937" class="numbered-list" start="1"><li><strong>投资回报构成</strong><p id="15b772f7-41c0-80a3-a0cf-fd0cbb1dce36" class="">股票回报 (约12.98%) = 企业盈利增长（11.67%） + 股息（1.52%） + 估值变化（-0.34%）</p><ul id="15b772f7-41c0-8064-9961-f861a1b4196c" class="bulleted-list"><li style="list-style-type:disc">企业盈利决定长期价格趋势</li></ul><ul id="15b772f7-41c0-8068-8041-caf8359b0b7e" class="bulleted-list"><li style="list-style-type:disc">短期股价波动更多来自估值变化（市场情绪、预期差）</li></ul></li></ol><ol type="1" id="15b772f7-41c0-808a-9451-eddcb0355fab" class="numbered-list" start="2"><li><strong>短期波动与长期获利的关系</strong><ul id="15b772f7-41c0-80ec-b06c-e0f7f6e20e45" class="bulleted-list"><li style="list-style-type:disc">长期周期：以5-10年为投资视角</li></ul><ul id="15b772f7-41c0-802e-a6af-e6e40b34c444" class="bulleted-list"><li style="list-style-type:disc">没有连续3年涨或跌的行情，避免熊市进场、牛市出场的反向操作</li></ul><ul id="15b772f7-41c0-8015-9559-e7100fc76ae3" class="bulleted-list"><li style="list-style-type:disc">市场中约70%的人在追涨杀跌的过程中亏钱</li></ul></li></ol><ol type="1" id="15b772f7-41c0-80da-b191-ed11d200120b" class="numbered-list" start="3"><li><strong>择时工具</strong><ul id="15b772f7-41c0-8053-ad3e-dcb42a2a6322" class="bulleted-list"><li style="list-style-type:disc">估值指标（如市盈率、股债收益率）</li></ul><ul id="15b772f7-41c0-807e-b076-ef6f7ddae747" class="bulleted-list"><li style="list-style-type:disc">情绪指标（恐慌指数、贪婪指数）</li></ul><ul id="15b772f7-41c0-80e3-9396-f4b949cede76" class="bulleted-list"><li style="list-style-type:disc">宏观政策、经济周期信号</li></ul></li></ol><hr id="15b772f7-41c0-80e3-a4e4-e17acba0f087"/><h2 id="15b772f7-41c0-809a-82f2-de49cdfa50b5" class=""><strong>8.2 估值择时法</strong></h2><ol type="1" id="15b772f7-41c0-8075-8e84-ddf372b5e3a5" class="numbered-list" start="1"><li><strong>市盈率分布法</strong><p id="15b772f7-41c0-8003-b09c-d08cecb105ff" class="">市盈率（Price-to-Earnings Ratio，P/E比率）是衡量股票估值的重要指标，通过将公司股价除以每股收益计算得出。它反映了投资者愿意为每1元公司盈利支付的价格，常用于判断股票是否被高估或低估。</p><ol type="1" id="15b772f7-41c0-805d-ba55-daa57c141f84" class="numbered-list" start="1"><li><strong>核心方法</strong>：<p id="15b772f7-41c0-8045-919c-dfedc42ad463" class="">计算市场中市盈率超过 70 倍的上市公司数量，并将其占总上市公司数量的比例作为衡量市场估值水平的标准。</p></li></ol><ol type="1" id="15b772f7-41c0-8036-9120-c6f62c31b5e5" class="numbered-list" start="2"><li><strong>判断标准</strong>：<ul id="15b772f7-41c0-801a-99c1-ed0edec0b19a" class="bulleted-list"><li style="list-style-type:disc"><strong>占比 &lt;10%</strong>：说明市盈率高于 70 倍的公司数量很少，市场整体估值较低，处于低估状态，<strong>强烈买入信号</strong>。</li></ul><ul id="15b772f7-41c0-80bc-8630-e864daed1fd9" class="bulleted-list"><li style="list-style-type:disc"><strong>占比 10%-20%</strong>：市场估值偏低，仍有一定的投资吸引力，<strong>可考虑买入</strong>。</li></ul><ul id="15b772f7-41c0-8065-9628-cbf58e2911a2" class="bulleted-list"><li style="list-style-type:disc"><strong>占比 &gt;45%</strong>：市盈率超过 70 倍的公司数量占比过高，市场整体估值偏高甚至泡沫化，<strong>建议卖出</strong>。</li></ul></li></ol></li></ol><ol type="1" id="15b772f7-41c0-80da-8198-cb61ae63418a" class="numbered-list" start="2"><li><strong>股债收益率法</strong><p id="15b772f7-41c0-8020-bb50-f919ac0f8dd6" class=""><strong>原理</strong>：</p><p id="15b772f7-41c0-80d0-a5d8-efea7c9c678d" class="">股债收益率法通过比较股票市场估值与无风险收益率（例如10年期国债利率）来判断股票相对于债券的投资价值。</p><p id="15b772f7-41c0-8074-a8b4-dcd932d06d83" class=""><strong>计算公式</strong>：</p><p id="15b772f7-41c0-80c1-9158-ed5710e1845c" class="">股债收益率股债收益率股债收益率 = (1 / 股市整体市盈率) - 十年国债利率</p><p id="15b772f7-41c0-80ab-8f11-d537fa555274" class="">其中，“1 / 股市整体市盈率”可被视作市场对未来盈利的估值倒数，即股市的收益率参照。与十年期国债利率相比，如果该值偏高，说明投资股票的相对回报更具吸引力；反之则显示债券更具吸引力。</p><p id="15b772f7-41c0-80fc-afe9-e150192e9cf1" class=""><strong>判断标准</strong>：</p><ul id="15b772f7-41c0-8076-93ae-f3a5a49a4607" class="bulleted-list"><li style="list-style-type:disc">当股债收益率 &gt; 3% ：股票相对非常便宜，应买入股票</li></ul><ul id="15b772f7-41c0-80d7-b6f4-cf716e1d84ae" class="bulleted-list"><li style="list-style-type:disc">当股债收益率 &lt; 0% ：股票估值偏贵，应卖出股票</li></ul></li></ol><ol type="1" id="15b772f7-41c0-80f3-b6f7-f9b3013fbd20" class="numbered-list" start="3"><li><strong>市场温度法</strong>（以PE中位数为衡量）<p id="15b772f7-41c0-8071-9e47-f895b859ed84" class=""><strong>原理</strong>：</p><p id="15b772f7-41c0-80c8-bbb6-d1094af377f3" class="">“市场温度”是通过将当前市场的PE中位数水平与历史数据进行对比，计算其在历史数据分布中的百分位（分位数），从而给市场一个“温度”概念。温度越低，代表市场越接近历史低估区间；温度越高，说明市场越接近历史高估区间。</p><p id="15b772f7-41c0-8050-b694-c562c4cca5e5" class="">例如：</p><p id="15b772f7-41c0-803a-b8d2-d3d7fc3a97bb" class="">假设当前市场PE中位数为31倍，该PE中位数在历史上处于第11%分位水平（即有89%的历史数据点PE中位数比这一刻高，11%的历史数据点比这一刻低），那么可以将其温度定义为“11°”。</p><p id="15b772f7-41c0-80a5-aa71-df99f07f4e12" class=""><strong>判断标准（参考案例）</strong>：</p><ul id="15b772f7-41c0-80fb-936e-c85ea7a1c66d" class="bulleted-list"><li style="list-style-type:disc">市场温度低于30°：市场低估。根据历史数据，过去三年绝对收益约为116%。</li></ul><ul id="15b772f7-41c0-80f4-95ba-ed512a345865" class="bulleted-list"><li style="list-style-type:disc">市场温度30°-70°：市场中估。过去三年绝对收益约为18%。</li></ul><ul id="15b772f7-41c0-8000-b770-deba12d79a58" class="bulleted-list"><li style="list-style-type:disc">市场温度高于70°：市场高估。过去三年绝对收益约为-21%。</li></ul><p id="15b772f7-41c0-801c-86c1-f97653cc8018" class="">该方法基于历史统计回溯，说明当市场在历史估值较低阶段买入，未来的回报潜力大幅增加；反之在高估阶段进入，未来回报率很低甚至负数。</p></li></ol><hr id="15b772f7-41c0-80ec-b650-e67dea381e88"/><h2 id="15b772f7-41c0-8065-8f39-ff6a0f6854bc" class=""><strong>8.3 情绪择时法</strong></h2><p id="15b772f7-41c0-80b0-acd2-f7785d437a47" class="">情绪择时法通过观察市场参与者的情绪指标（如恐惧、贪婪程度），分析市场是处于风险偏好还是避险状态，从而辅助判断买卖时机。市场情绪往往是市场短期波动的重要驱动力之一，因此，情绪指标可以为投资提供参考。<div class="indented"><hr id="15b772f7-41c0-80d5-91a0-fae7a357ff8d"/><h3 id="15b772f7-41c0-8063-acd8-c817449709fa" class=""><strong>1. 核心情绪指标</strong></h3><ol type="1" id="15b772f7-41c0-80ec-a2c7-dac8e8362226" class="numbered-list" start="1"><li><strong>恐惧/贪婪指数（VIX）</strong><ul id="15b772f7-41c0-8016-9de4-e8c3dc7e5931" class="bulleted-list"><li style="list-style-type:disc">VIX 指数（波动率指数）：衡量市场的波动率预期，通常被称为“恐慌指数”。</li></ul><ul id="15b772f7-41c0-8068-9ce2-dc1067aeab1d" class="bulleted-list"><li style="list-style-type:disc"><strong>逻辑</strong>：<ul id="15b772f7-41c0-802e-8908-f1dc650a7f67" class="bulleted-list"><li style="list-style-type:circle">VIX 越高，说明市场波动预期越大，投资者更倾向于避险（恐慌情绪浓厚）。</li></ul><ul id="15b772f7-41c0-8035-bbab-ea8cdfdd3b06" class="bulleted-list"><li style="list-style-type:circle">VIX 越低，说明市场预期稳定，投资者情绪较为乐观（贪婪情绪占主导）。</li></ul></li></ul><ul id="15b772f7-41c0-8013-90cf-c4b44e36d896" class="bulleted-list"><li style="list-style-type:disc"><strong>操作参考</strong>：<ul id="15b772f7-41c0-80bc-a07b-d2ef45744ddf" class="bulleted-list"><li style="list-style-type:circle"><strong>高VIX（恐惧）</strong>：市场恐慌时，通常是买入机会（抄底）。</li></ul><ul id="15b772f7-41c0-80d3-ac1c-f862f3c5e9af" class="bulleted-list"><li style="list-style-type:circle"><strong>低VIX（贪婪）</strong>：市场过度乐观时，警惕卖出风险（高估）。</li></ul></li></ul></li></ol><ol type="1" id="15b772f7-41c0-80c5-86ad-da7609916656" class="numbered-list" start="2"><li><strong>A股“韭圈儿”情绪指数</strong><p id="15b772f7-41c0-80fc-a78c-f3daf839859a" class="">类似于 VIX，用于衡量 A 股市场中的情绪波动情况。主要关注市场参与者（尤其是散户）对风险的偏好或避险情绪。</p></li></ol><ol type="1" id="15b772f7-41c0-80c6-bf22-e633c68aa5f0" class="numbered-list" start="3"><li><strong>北上资金</strong><ul id="15b772f7-41c0-8036-9dba-e19aebdec247" class="bulleted-list"><li style="list-style-type:disc"><strong>定义</strong>：北上资金指外资通过沪港通、深港通流入 A 股的资金量，是观察外资买卖意愿的重要指标。</li></ul><ul id="15b772f7-41c0-80f4-a1f6-ef193ef8bf9c" class="bulleted-list"><li style="list-style-type:disc"><strong>逻辑</strong>：<ul id="15b772f7-41c0-8095-8d4c-ea1226ca7b99" class="bulleted-list"><li style="list-style-type:circle">北上资金流入增加：代表外资看好市场，情绪偏积极。</li></ul><ul id="15b772f7-41c0-8099-a25b-e151eff65324" class="bulleted-list"><li style="list-style-type:circle">北上资金流出：代表外资对市场信心不足，情绪偏悲观。</li></ul></li></ul></li></ol><ol type="1" id="15b772f7-41c0-806b-8de2-d288bfa1dc09" class="numbered-list" start="4"><li><strong>新高比例</strong><ul id="15b772f7-41c0-800a-a692-d031cf572a9f" class="bulleted-list"><li style="list-style-type:disc"><strong>定义</strong>：市场中股价创历史新高的股票数量占整体股票数量的比例。</li></ul><ul id="15b772f7-41c0-800a-9627-c99807f3fa03" class="bulleted-list"><li style="list-style-type:disc"><strong>逻辑</strong>：<ul id="15b772f7-41c0-8053-a8b9-f1a95247acba" class="bulleted-list"><li style="list-style-type:circle">新高比例高：说明市场情绪高涨，风险可能累积。</li></ul><ul id="15b772f7-41c0-80b5-8553-e8aa5782cb08" class="bulleted-list"><li style="list-style-type:circle">新高比例低：说明市场情绪低迷，可能蕴藏机会。</li></ul></li></ul></li></ol><ol type="1" id="15b772f7-41c0-80f1-9745-d3152b658984" class="numbered-list" start="5"><li><strong>300 指数期货（多空比）</strong><ul id="15b772f7-41c0-80f8-92b6-ce30012af6be" class="bulleted-list"><li style="list-style-type:disc"><strong>定义</strong>：观察沪深 300 指数期货的贴水（空头占优）或升水（多头占优）情况。</li></ul><ul id="15b772f7-41c0-8004-8e58-d41c2a4d9735" class="bulleted-list"><li style="list-style-type:disc"><strong>逻辑</strong>：<ul id="15b772f7-41c0-800a-a02b-da1c279bba13" class="bulleted-list"><li style="list-style-type:circle">期货升水：多头情绪占优，市场偏乐观。</li></ul><ul id="15b772f7-41c0-8092-a60d-f874b3b7afd0" class="bulleted-list"><li style="list-style-type:circle">期货贴水：空头情绪占优，市场偏悲观。</li></ul></li></ul></li></ol><ol type="1" id="15b772f7-41c0-80ea-99a2-db2330108f69" class="numbered-list" start="6"><li><strong>股债回报差</strong><ul id="15b772f7-41c0-8067-988b-f0950ab9803b" class="bulleted-list"><li style="list-style-type:disc">见<strong>股债收益率法</strong>。该指标既可用于估值判断，也能反映市场情绪对风险资产的偏好。</li></ul></li></ol><ol type="1" id="15b772f7-41c0-80c8-88cf-db7633378240" class="numbered-list" start="7"><li><strong>融资占比</strong><ul id="15b772f7-41c0-80d9-8190-de1dd098f482" class="bulleted-list"><li style="list-style-type:disc"><strong>定义</strong>：两融余额中融资买入金额占比。</li></ul><ul id="15b772f7-41c0-808a-b428-d60f99ad27ab" class="bulleted-list"><li style="list-style-type:disc"><strong>逻辑</strong>：<ul id="15b772f7-41c0-8082-b932-f2c7dd4bf0c8" class="bulleted-list"><li style="list-style-type:circle">融资占比高：说明市场资金加杠杆买入，情绪偏贪婪，市场风险增加。</li></ul><ul id="15b772f7-41c0-8072-a5e8-f1ee887157a6" class="bulleted-list"><li style="list-style-type:circle">融资占比低：说明市场情绪悲观，风险偏好低，可能是建仓机会。</li></ul></li></ul></li></ol><hr id="15b772f7-41c0-80a3-b52b-c307beb53256"/><h3 id="15b772f7-41c0-80a9-abfe-fcab5d6ef144" class=""><strong>2. A股贪婪指数</strong></h3><ul id="15b772f7-41c0-8093-b98b-cc33ffe0989f" class="bulleted-list"><li style="list-style-type:disc"><strong>定义</strong>：通过<strong>“韭圈儿”情绪指数</strong>计算出的市场整体情绪水平，分为 0-100 的范围，反映市场从恐惧到贪婪的状态。</li></ul><ul id="15b772f7-41c0-80eb-9044-c6399fee0283" class="bulleted-list"><li style="list-style-type:disc"><strong>判断标准</strong>：<ul id="15b772f7-41c0-80f1-92fe-d137f71c2170" class="bulleted-list"><li style="list-style-type:circle"><strong>80-100（极度贪婪）</strong>：市场情绪过热，建议卖出。</li></ul><ul id="15b772f7-41c0-804a-8cfe-cd4986695034" class="bulleted-list"><li style="list-style-type:circle"><strong>20-80（情绪分歧）</strong>：市场中性或情绪分化，建议观望或谨慎操作。</li></ul><ul id="15b772f7-41c0-8066-bc26-ccdb1b078a45" class="bulleted-list"><li style="list-style-type:circle"><strong>0-20（极度恐惧）</strong>：市场情绪极端悲观，建议买入。</li></ul></li></ul><hr id="15b772f7-41c0-803a-a494-f5687f251d8c"/><h3 id="15b772f7-41c0-80f2-9c54-eedfb24dfd57" class=""><strong>3. VIX 的实战应用</strong></h3><p id="15b772f7-41c0-8041-a1cd-c88bd7cfeb73" class=""><strong>如何解读 VIX 指数？</strong></p><ol type="1" id="15b772f7-41c0-8082-9b8b-c1d101afe167" class="numbered-list" start="1"><li><strong>高 VIX （如 &gt;30）</strong>：<ul id="15b772f7-41c0-809d-b86e-f5d6b7236bb0" class="bulleted-list"><li style="list-style-type:disc">市场恐慌情绪较强，通常伴随较大的波动和抛售。</li></ul><ul id="15b772f7-41c0-80b6-abe1-d22f760171a4" class="bulleted-list"><li style="list-style-type:disc">策略：关注低估值的优质资产，可逐步建仓。</li></ul></li></ol><ol type="1" id="15b772f7-41c0-80cf-9c50-de17f5149d4c" class="numbered-list" start="2"><li><strong>低 VIX （如 &lt;15）</strong>：<ul id="15b772f7-41c0-80d3-81c5-fb9bf81ad754" class="bulleted-list"><li style="list-style-type:disc">市场情绪过于乐观，可能存在潜在高估和回调风险。</li></ul><ul id="15b772f7-41c0-8085-93f2-cbaa32f5c56b" class="bulleted-list"><li style="list-style-type:disc">策略：降低仓位或逐步止盈。</li></ul></li></ol><p id="15b772f7-41c0-80cd-a676-da3c11e7603c" class=""><strong>如何结合其他指标？</strong></p><ul id="15b772f7-41c0-808d-ae11-f2569c922228" class="bulleted-list"><li style="list-style-type:disc">高 VIX + 北上资金流入：说明市场虽然恐慌，但外资在抄底，是较好的买入信号。</li></ul><ul id="15b772f7-41c0-80ac-979c-cb659f4359fc" class="bulleted-list"><li style="list-style-type:disc">低 VIX + 高融资占比：市场过度贪婪，警惕回调或泡沫化风险。</li></ul></div></p><hr id="15b772f7-41c0-80a0-a5e7-e355a1a18948"/><h2 id="15b772f7-41c0-8011-9d1a-d04c8716da83" class=""><strong>8.4 宏观择时法</strong></h2><h3 id="15b772f7-41c0-8090-912a-eddaf267e115" class="">宏观拣时法</h3><p id="15b772f7-41c0-80aa-8a9d-fe14f456804f" class="">宏观拣时法通过分析国家和全球经济政策、货币政策周期、贸易环境及重大事件等宏观因素，判断市场可能的趋势与周期拖点。宏观经济因素对资本市场有重大影响，尤其在中美两国的政策互动中，已存在“中美逆周期”的特点。</p><hr id="15b772f7-41c0-80c2-b643-faf7fa610f4c"/><h3 id="15b772f7-41c0-808a-ab20-cc59d35c3772" class=""><strong>1. 中美逆周期模型</strong></h3><h3 id="15b772f7-41c0-8028-9ea0-c01f76ff0a71" class=""><strong>中美经济发展逻辑的对比（不可能三角）：</strong></h3><ol type="1" id="15b772f7-41c0-808d-9856-f8f12140d070" class="numbered-list" start="1"><li><strong>中国：经济增长为首要目标</strong><ul id="15b772f7-41c0-80a4-882f-e81e25b47d83" class="bulleted-list"><li style="list-style-type:disc"><strong>逻辑链条：</strong><p id="15b772f7-41c0-80a9-9b96-c87cb0222f90" class="">经济增长（核心目标）→ 货币扩张（通过增加权桩和放水刺激经济）→ 汇率压力（为保持经济增长，优先考虑实现经济刺激，导致人民币贵值压力）→ 经济增长</p></li></ul><ul id="15b772f7-41c0-8005-989d-d77364f469a1" class="bulleted-list"><li style="list-style-type:disc"><strong>挑战：</strong><ul id="15b772f7-41c0-800c-b46f-d4a4d5e6a5dc" class="bulleted-list"><li style="list-style-type:circle">货币扩张虽然能短期刺激经济，但会推高金融风险（如债务问题和资产注浪），反返来影响经济增长的可持续性。</li></ul><ul id="15b772f7-41c0-807b-ac4c-fb08b7472125" class="bulleted-list"><li style="list-style-type:circle">降息措施使资本流出到海外（特别是美国），给人民币汇率带来贵值压力。</li></ul></li></ul></li></ol><ol type="1" id="15b772f7-41c0-80a3-a61d-dc63eab74660" class="numbered-list" start="2"><li><strong>美国：控制通股为首要目标</strong><ul id="15b772f7-41c0-8054-8020-cb73e4037299" class="bulleted-list"><li style="list-style-type:disc"><strong>逻辑链条：</strong><p id="15b772f7-41c0-8062-8044-d51e565dcdfe" class="">经济增长（最重要） → 紧缩政策（加息与缩衡）→  控制通股（核心目标）→ 经济增长</p></li></ul><ul id="15b772f7-41c0-80d6-a22d-d715754dd838" class="bulleted-list"><li style="list-style-type:disc"><strong>挑战：</strong><ul id="15b772f7-41c0-805b-9725-d63c3dab85dc" class="bulleted-list"><li style="list-style-type:circle">美国首要是要治疗通胀</li></ul><ul id="15b772f7-41c0-8085-912f-ce8fab67accb" class="bulleted-list"><li style="list-style-type:circle">加息和缩衡政策虽然能降低通股，但会削弱经济活力，抑制企业盈利和消费需求。</li></ul><ul id="15b772f7-41c0-803b-b114-cd953320a36d" class="bulleted-list"><li style="list-style-type:circle">美股受到高利率的压制，资金回流致债券等避险资产。</li></ul></li></ul></li></ol><hr id="15b772f7-41c0-80d8-b914-d60baec3de46"/><h3 id="15b772f7-41c0-80e6-a418-dfdf881cada5" class=""><strong>2. 中美逆周期历史案例</strong></h3><h3 id="15b772f7-41c0-8091-87f9-ff903669856c" class=""><strong>近年关键周期分析：</strong></h3><ol type="1" id="15b772f7-41c0-80ba-85fc-d3036314bbec" class="numbered-list" start="1"><li><strong>2015 年</strong><ul id="15b772f7-41c0-8089-8802-d7fcd8bc6892" class="bulleted-list"><li style="list-style-type:disc"><strong>中国</strong>：A 股熔断导致市场危机，随后通过棚改计划与货币放水突破低返。</li></ul><ul id="15b772f7-41c0-8025-a94c-caca73ae94f7" class="bulleted-list"><li style="list-style-type:disc"><strong>美国</strong>：加息周期接近尾声，利率见顶。</li></ul><ul id="15b772f7-41c0-80a1-87fd-e7a6ffe92d8e" class="bulleted-list"><li style="list-style-type:disc"><strong>结果</strong>：2016-2017 年，中国和美国经济同步复苏，全球制造业景气指数 PMI &gt; 85。</li></ul></li></ol><ol type="1" id="15b772f7-41c0-805a-b4ef-c8262c9b7c72" class="numbered-list" start="2"><li><strong>2018 年</strong><ul id="15b772f7-41c0-8071-adfa-f6f3d3292c3c" class="bulleted-list"><li style="list-style-type:disc"><strong>中国</strong>：A 股暴跌，市场信心大幅下降。</li></ul><ul id="15b772f7-41c0-80ed-bca7-f6a9676c48d7" class="bulleted-list"><li style="list-style-type:disc"><strong>美国</strong>：中美贸易战升级，市场注意力增加。</li></ul><ul id="15b772f7-41c0-80e0-b287-e6fe52209dc7" class="bulleted-list"><li style="list-style-type:disc"><strong>后续</strong>：2019 年疫情爆发，美国经济改变政策，由加息转为降息。</li></ul><p id="15b772f7-41c0-8085-930b-c18523f3d68c" class=""><strong>2020 年（疫情时期）</strong></p><ul id="15b772f7-41c0-8058-9b7a-c7679bef28da" class="bulleted-list"><li style="list-style-type:disc"><strong>中国</strong>：经济逐步复苏，A 股表现较为强势。</li></ul><ul id="15b772f7-41c0-80af-8298-e4ee1d80e4bf" class="bulleted-list"><li style="list-style-type:disc"><strong>美国</strong>：受疫情减低美股熔断，随后启动大规模货币宽松政策。</li></ul></li></ol><ol type="1" id="15b772f7-41c0-80ca-a33c-e5e16ef7109b" class="numbered-list" start="3"><li><strong>2022 年（疫情及俄乌冲突）</strong><ul id="15b772f7-41c0-8048-8a46-ddb8f2a73d39" class="bulleted-list"><li style="list-style-type:disc"><strong>中国</strong>：推出 12 万亿规模的货币放水，但经济复苏缓慢，PMI 跌至 49。</li></ul><ul id="15b772f7-41c0-808f-b988-c4cf976a0aa0" class="bulleted-list"><li style="list-style-type:disc"><strong>美国</strong>：为应对高通股启动加息周期，PMI 保持在 56。</li></ul><ul id="15b772f7-41c0-804d-ae6d-dec3048199ab" class="bulleted-list"><li style="list-style-type:disc"><strong>结果</strong>：中美经济均面临大压力，周期处于不同阶段。</li></ul></li></ol><hr id="15b772f7-41c0-803d-aad6-eeb7b2269e83"/><h3 id="15b772f7-41c0-8090-a5a9-df7c2e1a87ce" class=""><strong>3. 市场交易预期的逻辑</strong></h3><p id="15b772f7-41c0-804e-9466-f4bfc7373fda" class="">市场交易的核心在于预期：</p><ul id="15b772f7-41c0-802f-b745-e39296dba558" class="bulleted-list"><li style="list-style-type:disc"><strong>现在坏，但未来更坏？</strong></li></ul><ul id="15b772f7-41c0-8090-a8d0-f1473da4d39c" class="bulleted-list"><li style="list-style-type:disc"><strong>现在坏，但未来可能转好？</strong></li></ul><p id="15b772f7-41c0-80bf-8b72-dba0db71123e" class="">例如：</p><ul id="15b772f7-41c0-80e4-8285-d90d5435b7a7" class="bulleted-list"><li style="list-style-type:disc">2022 年，中美同时面临 <strong>供应链冻结</strong> 和 <strong>能源危机</strong>（俄乌冲突加剧）；全球经济在 <strong>加息潮</strong> 下普遍承压。此时市场短期霉动，但为中期建仓创造机会。</li></ul><hr id="15b772f7-41c0-80a2-b3dc-efa26469af21"/><h3 id="15b772f7-41c0-805d-9f48-f0e8cbfe94f5" class=""><strong>4. 全球宏观背景与影响</strong></h3><p id="15b772f7-41c0-80cc-a3dd-f120d993456f" class="">2022年中美遇到共同的问题：</p><ol type="1" id="15b772f7-41c0-80d4-8833-fca580dd3cfd" class="numbered-list" start="1"><li><strong>供应链冻结</strong>：<ul id="15b772f7-41c0-807e-916d-d04b689a6b10" class="bulleted-list"><li style="list-style-type:disc">疫情导致的供应链断裂影响制造业和出口贸易。</li></ul></li></ol><ol type="1" id="15b772f7-41c0-80f7-a153-c35dcadcdd84" class="numbered-list" start="2"><li><strong>能源击击（俄乌冲突）</strong>：<ul id="15b772f7-41c0-8090-9c53-d5879f6d1d93" class="bulleted-list"><li style="list-style-type:disc"><strong>美元指数上涨</strong>：通常压制大宗商品价格，但能源（如石油、天然气）由于供应紧张，价格反而上涨。</li></ul><ul id="15b772f7-41c0-80c6-bf6b-e271caf5ff7e" class="bulleted-list"><li style="list-style-type:disc">大宗商品<strong>分化</strong>：能源类价格进一步走高，而金属和其他非能源类大宗商品价格被压制。</li></ul></li></ol><ol type="1" id="15b772f7-41c0-8073-a11e-f1650a48806d" class="numbered-list" start="3"><li><strong>全球加息潮</strong>：<ul id="15b772f7-41c0-80a8-8773-db95cfe9b437" class="bulleted-list"><li style="list-style-type:disc">美联僕主导的加息政策带动全球中行紧缩，加剧资金成本上升，对股市和经济复苏形成压力。</li></ul></li></ol><h3 id="15b772f7-41c0-8087-8c2f-c4204dbf9c4e" class=""><strong>2022 结论于 A 股：</strong></h3><ol type="1" id="15b772f7-41c0-8007-aaac-cf80cf32ddbc" class="numbered-list" start="1"><li><strong>短期（6-12 个月）：震荡</strong><p id="15b772f7-41c0-807a-9aa9-e75ec471b39d" class="">市场受全球经济压力和不确定性影响，短期可能以<strong>震荡</strong>为主，适合防守型策略。</p></li></ol><ol type="1" id="15b772f7-41c0-80f1-bcef-fd1cc6df241a" class="numbered-list" start="2"><li><strong>中期（1-3 年）：建仓</strong><p id="15b772f7-41c0-8087-8a27-d040cdc2ee27" class="">随着政策逐步释放积极信号（如放水、改革措施），中期具备布局前景。</p></li></ol><ol type="1" id="15b772f7-41c0-80f8-8f15-ed7899bba8be" class="numbered-list" start="3"><li><strong>长期（10 年）：坚实持有 A 股</strong><p id="15b772f7-41c0-801f-8ddb-dbd8b4cdaefe" class="">中国经济结构调整下，房地产资金逐步流入股市。未来十年，A 股有望受益于经济转型和资本市场深化。</p></li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>草稿</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="16c772f7-41c0-807f-8caf-e07eb671426c" class="page sans"><header><h1 class="page-title">草稿</h1><p class="page-description"></p></header><div class="page-body"><h1 id="16c772f7-41c0-80e6-8ebf-fb0727845c1f" class="">经济周期</h1><p id="16c772f7-41c0-8028-82bd-f80ba553e913" class="">康波周期 五十到六十年一次</p><p id="16c772f7-41c0-809a-aae9-f0426792a249" class="">不同时期对应不同资产</p><p id="16c772f7-41c0-80f9-b28b-cec1e7c7534b" class="">资产          股票。       债权。      商品</p><p id="16c772f7-41c0-805f-a655-f227dbc29175" class="">帝国更替 五个因素</p><p id="16c772f7-41c0-80fe-be50-f88320cd9b8c" class="">财政赤字：加息，紧缩</p><p id="16c772f7-41c0-8089-966a-f702d094adc2" class="">财富差距加大</p><p id="16c772f7-41c0-8015-a412-eb64908bc2af" class="">人口变化</p><p id="16c772f7-41c0-8045-a4f9-ce7fbe5d626e" class="">其他大国崛起</p><p id="16c772f7-41c0-80ca-9a8e-ef7eceaa4844" class="">大流行病：阻断供应链</p><p id="16c772f7-41c0-800a-b11d-ef1ba06851ab" class="">滞涨 停滞发展 通货膨胀 萧条的定义</p><h1 id="16c772f7-41c0-8001-b1d8-d5d4556b9cef" class="">黑色十字交叉</h1><p id="16c772f7-41c0-8096-a6a5-c8b325f37932" class="">国债利息</p><p id="16c772f7-41c0-805f-bd3a-d3334a2d5aaf" class="">两年期利息和十年期利息出现了倒挂</p><p id="16c772f7-41c0-8057-8db9-ec9087289268" class="">原因：进入加息周期</p><p id="16c772f7-41c0-8066-8c8d-c298f7262031" class="">短借长贷，短期利率低，长期利率高，赚利差。</p><p id="16c772f7-41c0-8011-96f2-cdf90d89b2bb" class="">利率倒挂，就会使这部分人，还短期卖长期，就会造成金融市场的错配和挤兑。</p><p id="16c772f7-41c0-80ff-87a3-dcfa675c575c" class="">2.对加息的担忧，加息又因为通胀严重，所以抑制通胀</p><h1 id="16c772f7-41c0-80a0-95ab-e89ef5311d4f" class="">历史危机回顾</h1><p id="16c772f7-41c0-80a8-b7fc-dc64c61caa3a" class="">美国怎么讲危机扩散到全球</p><p id="16c772f7-41c0-80ae-973a-fade09c7cd44" class="">97年亚洲金融危机，金融危机之前，美国已出现衰退。进行美元超发，美元注入发展中国家。危机出现，就要收回美元，结汇收益，卖出资产和外国货币。索罗斯对冲基金，帮凶，做工 货币。</p><p id="16c772f7-41c0-80d9-91a3-f2a8f2356b28" class="">外汇储备（出口，华侨），捍卫住了，人民币的汇率。</p><p id="16c772f7-41c0-8029-9b45-c33c8a88ea9e" class="">大a走出独立行情，在3000点左右，因为参与资金运转。</p><h1 id="16c772f7-41c0-805d-8840-cea6a47ca690" class="">汇率机制</h1><h2 id="16c772f7-41c0-8022-ac0f-f608f272c2e6" class="">汇率定价</h2><p id="16c772f7-41c0-8088-a0a6-e6ac3cf3ff11" class="">跨国资金变动考虑汇率</p><p id="16c772f7-41c0-8015-8eca-c9d61563bc35" class="">汇率三个作用</p><p id="16c772f7-41c0-8084-982b-c4483478ee68" class="">1.购买外国商品</p><p id="16c772f7-41c0-8057-80f0-c95f4522898e" class="">同样的商品在国外国内应该一样，不应该有太大的利差。如果有利差，也会有人把商品从价格便宜的国家卖到价格更高的国家，长期流动，商品价格有平均了。购买力平价。</p><ol type="1" id="16c772f7-41c0-80fe-bbdc-dddb9fd0d7c9" class="numbered-list" start="1"><li>购买资产</li></ol><p id="16c772f7-41c0-8081-b3e5-fa253ceb7d88" class="">对海外的投资</p><p id="16c772f7-41c0-8094-b34c-d2ff1bf130b1" class="">资本输入国家，就是他资本向下的外汇流入</p><p id="16c772f7-41c0-8022-87cf-ece52d35b03e" class="">计算海外收益率：两个国家项目的收益率和汇率之间的关系就是两个国家收益率加上汇率的变动应该相等， 利率平价</p><p id="16c772f7-41c0-80e2-98ed-e5e22e8066f0" class="">两个国家无风险的收益率，两个国家的利率差应该等于两个国家货币兑换（汇率）的变化。</p><p id="16c772f7-41c0-809f-b321-ecf65a31a5c8" class="">货币变动：当货币偏某一方变动的时候，例如美国加息缩表，会使美国整体的无风险收益率提高，如果中国的收益率不变的话，资金就会向美国移动，造成美元升值，人民币贬值。</p><p id="16c772f7-41c0-80c8-ae20-d23638d7cb09" class="">3.国家综合实力决定汇率的表现（最根本的决定机制）</p><p id="16c772f7-41c0-8067-8c51-f9d3e176e907" class="">中国本来是固定汇率，综合国力大于汇率。</p><p id="16c772f7-41c0-80c6-aab5-f5d4cf2d9bad" class="">中国汇率即随着市场变化，自由买卖，同时国家对汇率也要有引导</p><h2 id="16c772f7-41c0-804f-a670-f3e1d74dde2d" class="">汇率对生活的影响</h2><p id="16c772f7-41c0-8080-a9c7-d90e170ac9bd" class="">进口商品物价：人民币贬值，汇率波动，导致输入性的通货膨胀，进口成本增加</p><p id="16c772f7-41c0-8052-a96d-f4bc73d001ab" class="">资产的贬值：进击好，海外资金进入中国。经济不好，资金外逃，资产价格下降。越资金出逃价格约下降，价格越降资金越出逃。例如房市借的美元债无力归还；股市中的北向资金也出逃。极端情况，导致踩踏效应</p><p id="16c772f7-41c0-806f-9a56-c9ca4055150c" class="">进口原料：原材料进口价格上涨，影响公司利润，传导给消费品，又因为整个物价导致消费不足，企业涨价压力很大，汇率机制里叫做pass through</p><p id="16c772f7-41c0-8039-8d96-e58b252b0a50" class="">中国企业成本传导效应非常低，没办法把原材料的涨价传到给消费者，也就是说，企业需要自己吃进。造成中国大部分制造企业，净利率不高。大a中能够连续创造答复增长，又能创造资产收益率很高的恭喜很少，一就是因为成本上调传导给消费者能力弱，生产者定价能力低，另一方面是居民消费力不够。</p><p id="16c772f7-41c0-80e0-8027-e9f8dc8cffd1" class="">人民币贬值有利于出口。总的来讲对于进口</p><h2 id="16c772f7-41c0-807c-8e66-ecbc4a4b00f0" class="">人民币贬值的因素</h2><p id="16c772f7-41c0-8022-b422-d52542eac706" class="">利率平价，本来中国国债利率高于美国，因为信心发展国家，需要吸引资金投入，但是美国加息后，出现了美国利率高于中国的罕见现象。</p><p id="16c772f7-41c0-8053-89fb-d6456d613737" class="">2022年中因素</p><p id="16c772f7-41c0-801e-b3cd-e7a8925cad52" class="">1.美国长短倒挂，美国经济危机。</p><p id="16c772f7-41c0-80c0-9014-f15b0e45acb7" class="">中美倒挂，资金流入美国。</p><p id="16c772f7-41c0-800a-a529-ec67956b65c8" class="">2.疫情，国内经济遇到困难</p><p id="16c772f7-41c0-80c7-b18b-fd893dd8723c" class="">3.供应链转移东南亚</p><p id="16c772f7-41c0-806b-9a88-e0d32375adcd" class="">4.能源危机，俄乌冲突</p><p id="16c772f7-41c0-80e2-83f8-f8fbd831341c" class="">5.美元上涨</p><p id="16c772f7-41c0-80d0-a916-c71a454a9d27" class="">6.中国在降息</p><h2 id="16c772f7-41c0-8041-9406-d99ce7f8ec62" class="">人民币升值的因素</h2><p id="16c772f7-41c0-80a6-bfe4-cfaf93218471" class="">人民币机制;我国开始实行以市场供求为基础、参考一篮子货币进行调节、有管理的浮动汇率制度。</p><p id="16c772f7-41c0-800e-85b3-e4fb858f2877" class="">2022年中因素</p><p id="16c772f7-41c0-80f0-ac38-e8cdc475ec0b" class="">1.现在跌因为人民币之前涨太猛，回调</p><p id="16c772f7-41c0-80b3-ac17-e4a722ae401a" class="">2.快速下跌，央妈会管理</p><p id="16c772f7-41c0-801c-904d-f1cb5ab7850a" class="">3.人民币在imf提高了占比，代表全球对人民币的信心</p><p id="16c772f7-41c0-8078-91c7-f2c3dc2a3bda" class="">4.中国制造全产业，核心力量</p><p id="16c772f7-41c0-8059-972d-c3064888a73b" class="">5.试金石，央行在观察，没有干预</p><p id="16c772f7-41c0-80d2-b053-c7c868dbe913" class="">6.吸引了海外资金</p><h2 id="16c772f7-41c0-8085-b176-ee65cbe6184a" class="">全球各国汇率看点</h2><p id="16c772f7-41c0-80fe-be08-c4ea666b2ea4" class="">2022年中</p><p id="16c772f7-41c0-807a-9989-e37d16485653" class="">1.欧盟</p><p id="16c772f7-41c0-80a4-8050-d90eba8a59ef" class="">通货膨胀问题</p><p id="16c772f7-41c0-80ad-bc9a-d109176bcaad" class="">imf降低了欧元占比</p><p id="16c772f7-41c0-8069-a6aa-cd48d0ae92a2" class="">2.日本</p><p id="16c772f7-41c0-80c7-84b7-e801904bc682" class="">新低</p><p id="16c772f7-41c0-80f6-aab5-c1ccad0a3503" class="">经济老龄化</p><p id="16c772f7-41c0-8062-85d2-e33aed22de0b" class="">抛出美债买入国债</p><p id="16c772f7-41c0-80e4-b161-f38ad1c7b867" class="">维持零利率</p><p id="16c772f7-41c0-80f7-85fd-c0563ba1d215" class="">汇率跌</p><p id="16c772f7-41c0-807b-9e8f-d7ca326f834c" class="">3.新兴市场</p><p id="16c772f7-41c0-803b-b5a0-e6c6dbeffd76" class="">美国回收，新市场降低</p><h2 id="16c772f7-41c0-8041-a529-dda69bbe637e" class="">5.1黄金的前世今生</h2><p id="16c772f7-41c0-802b-84f2-c8e2963ec853" class="">资金最古老的表现形式</p><p id="16c772f7-41c0-8040-8a33-c149f45c39f1" class="">乱世存黄金</p><h2 id="16c772f7-41c0-8094-87a9-dda12c1bdf78" class="">5.2国际金价影响因素</h2><p id="16c772f7-41c0-80a9-bcc8-d2539df767f9" class="">乱世存黄金</p><p id="16c772f7-41c0-801a-a378-d396ed5d7945" class="">避险资产</p><p id="16c772f7-41c0-80a4-918c-c56962a7aa11" class="">影响金价因素</p><p id="16c772f7-41c0-80c2-8a2b-d25388be53e1" class="">1.美元</p><p id="16c772f7-41c0-803a-8481-dfaf60a5ec7f" class="">美元走强，黄金走弱</p><p id="16c772f7-41c0-8077-ab6a-c849d83535fa" class="">无风险的美债也会影响黄金</p><p id="16c772f7-41c0-80a3-82bd-da4aab8b41c4" class="">2.非农数据</p><p id="16c772f7-41c0-80bb-ac1a-d9788058a8b2" class="">非农业人口就业数据反映美国经济数据进而影响黄金价格</p><p id="16c772f7-41c0-80e9-bd02-e1de7b9999b6" class="">非农好，美元好，黄金跌</p><p id="16c772f7-41c0-8078-94d0-cdd02d2f5ec2" class="">3.股票</p><p id="16c772f7-41c0-80c5-9762-c71f11cac875" class="">股票和黄金反向关系</p><p id="16c772f7-41c0-80bc-81f8-e3df367d697b" class="">经济好股票涨，黄金跌</p><p id="16c772f7-41c0-802f-9a43-e2ec4ff3f2d1" class="">4.通货膨胀</p><p id="16c772f7-41c0-8040-a02a-d04a890b0c9c" class="">正向关系</p><p id="16c772f7-41c0-806b-9d68-e8c41df0d493" class="">货币滥发，假设本来货币黄金比1：1，如果超发货从原来的1w变成9w，货币黄金比9：1</p><p id="16c772f7-41c0-8028-bb6d-c06d3404db8c" class="">黄金相应上涨，货币评价</p><p id="16c772f7-41c0-8061-ad18-c107179e3d83" class="">5.国际局势</p><p id="16c772f7-41c0-8073-aba4-e81a8c42fa6f" class="">动荡就会上涨</p><p id="16c772f7-41c0-80fd-841b-ec116e3a09b1" class="">总结：主要看美元</p><p id="16c772f7-41c0-803d-a4d5-faeeb05c35d4" class="">5.3 黄金的历史收益率</p><figure id="16c772f7-41c0-8072-87da-f3df120210fc" class="image"><a href="%E8%8D%89%E7%A8%BF%2016c772f741c0807f8cafe07eb671426c/image.png"><img src="%E8%8D%89%E7%A8%BF%2016c772f741c0807f8cafe07eb671426c/image.png"/></a></figure><p id="16c772f7-41c0-8067-9a7a-e697c54a0cd5" class="">为什么70-22，80-22</p><p id="16c772f7-41c0-800e-94cf-e043540e8e81" class="">黄金的收益率差这么多</p><p id="16c772f7-41c0-8022-bc85-fa151240a9a8" class="">原因：布雷登森林体系的瓦解</p><p id="16c772f7-41c0-808d-a1a0-d5d714ec301f" class="">美国不维持原来的黄金美元比例，黄金价格飙升</p><p id="16c772f7-41c0-808c-b83e-ecb2d84d8e3e" class="">第二次大变动79-80年</p><p id="16c772f7-41c0-80eb-b628-f275c99df3c8" class="">能源危机</p><p id="16c772f7-41c0-807e-974a-eeef7a8c7372" class="">伊朗成立</p><p id="16c772f7-41c0-8064-b36c-fb1e11624ddd" class="">萨达姆上台</p><p id="16c772f7-41c0-806d-abe0-d82dd9692ec6" class="">使石油出现巨大危机</p><p id="16c772f7-41c0-80b1-a966-e55bf64f2de6" class="">5.4美元指数的逻辑</p><p id="16c772f7-41c0-8012-b561-dcf27b330f20" class="">2022年中</p><p id="16c772f7-41c0-8053-a8ed-fd234d6e82f9" class="">美元强势上涨 20年新高 104</p><p id="16c772f7-41c0-8015-970e-f5d0534c0f09" class="">原因：</p><p id="16c772f7-41c0-80c7-bb99-e2136c7004a3" class="">1.美联储加息</p><p id="16c772f7-41c0-8087-a0dc-cbd4672c69da" class="">造成美国资产收益率上涨，美元回流潮汐，美元上涨</p><p id="16c772f7-41c0-80fc-8c07-f9ccdd27ba71" class="">2.能源危机</p><p id="16c772f7-41c0-8033-8c13-fbf9180f1de0" class="">全球收到能源危机短缺的影响</p><p id="16c772f7-41c0-80de-a7ec-ea7d33b652a7" class="">美国影响最小，美国使能源进出口国，出口液燃气，美国在高位和欧洲签订了长期供应合同，利好美元汇率</p><p id="16c772f7-41c0-80d4-8257-f7ae3209d258" class="">3.美国立场</p><p id="16c772f7-41c0-80d9-8ee2-f5e8c61fff12" class="">弱势美元政策</p><p id="16c772f7-41c0-80d0-a960-c0762c522c7c" class="">贸易战，重新夺回美国商品的全球竞争力， 下调汇率，利于出口</p><p id="16c772f7-41c0-8006-8a0c-e9a3ab529844" class="">但现在美国通货膨胀，美国必须要让汇率强势来抑制通胀，带来进口，通胀降低，有利于资金回流</p><p id="16c772f7-41c0-80db-bf2a-cde5a0e0300a" class="">市场初清</p><p id="16c772f7-41c0-8089-ae22-fb438bc99e34" class="">加息后降息 淘汰低效的产能</p><p id="16c772f7-41c0-80aa-86ec-e2494e740d30" class="">5.5黄金一飞冲天的机会</p><p id="16c772f7-41c0-8081-9077-df6b34a858e2" class="">是否俄乌冲突引发黄金暴涨？</p><p id="16c772f7-41c0-80d1-9b86-e41fb014ab3f" class="">疫情导致的供应链问题，和俄乌冲突导致的能源危机，都不是黄金结构性上涨的内因</p><p id="16c772f7-41c0-8029-aaa2-dd49d2ccc29b" class="">黄金结构性上涨还是取决于美元</p><p id="16c772f7-41c0-80b3-898f-e2e1b67c0a4b" class="">黄金真正上涨在于美元出现负利率</p><p id="16c772f7-41c0-8043-a8ef-fa771cbdb7ca" class="">美国国债出现负利率，投资黄金不会亏</p><p id="16c772f7-41c0-803e-bb1b-fa8b72cd59aa" class="">怎么可能出现负利率？</p><p id="16c772f7-41c0-8057-8f25-fdd94674156d" class="">80出现过</p><p id="16c772f7-41c0-80b8-8558-c04ca6e47798" class="">现在有可能吗？</p><p id="16c772f7-41c0-80d7-8dc4-da2dee87223a" class="">要看俄乌冲突的危机</p><p id="16c772f7-41c0-80ed-b08f-e16668f19e36" class="">达力欧说站在2022年9月回看可能几个非常重要影响全球的后果，三个问题：</p><p id="16c772f7-41c0-8038-b2f2-d76722eb7b4f" class="">俄罗斯赢</p><p id="16c772f7-41c0-8008-bf47-d8e26dbb4a2a" class="">1.对乌克兰战略地区控制</p><p id="16c772f7-41c0-801f-beab-fae3078fbd82" class="">2.俄罗斯经济不会受到毁灭性打击。量化成gdp下降在15%以内</p><p id="16c772f7-41c0-802c-984f-d5bccf08d764" class="">3.俄罗斯能回到政治版图当中，能回到g20峰会</p><p id="16c772f7-41c0-8073-95cd-c0a267bef130" class="">如果不满足，可能会发生进一步冲突</p><p id="16c772f7-41c0-803d-8c6f-f7db2fe7aab0" class="">美国对俄罗斯制裁，全球站队，支持美国和同情 俄罗斯的阵营</p><p id="16c772f7-41c0-8060-a9c0-d3ddefe4fada" class="">就会出现冷战，对全球打击</p><p id="16c772f7-41c0-80a2-a3c4-fd0d5dfe748e" class="">美国进击不寻常</p><p id="16c772f7-41c0-807f-8a75-fde7cd1a2e92" class="">2022年中美国在进击衰退的边缘，因此在加息缩表，为了使全球资金回流美国补血撑住美股和美债</p><p id="16c772f7-41c0-80a1-a976-db6f134791be" class="">r如果不能实现软着陆</p><p id="16c772f7-41c0-80db-af61-c05fb9cb64b6" class="">会导致</p><ol type="1" id="16c772f7-41c0-80ba-af8e-d5172d54b8f9" class="numbered-list" start="1"><li>美国债务会继续扩大到无法收拾的信用崩溃的地步</li></ol><ol type="1" id="16c772f7-41c0-80b0-9073-f3218dd75c42" class="numbered-list" start="2"><li>降息就会到负利率的到来</li></ol><p id="16c772f7-41c0-8068-903f-ee453ad71f52" class="">5.6 黄金的投资方式对比</p><figure id="16c772f7-41c0-8014-9d74-d3def67ff0f6" class="image"><a href="5%20%E9%BB%84%E9%87%91%E6%9C%BA%E5%88%B6%2010e772f741c080a49adcef33bbde1f75/image.png"><img src="5%20%E9%BB%84%E9%87%91%E6%9C%BA%E5%88%B6%2010e772f741c080a49adcef33bbde1f75/image.png"/></a></figure><figure id="16c772f7-41c0-8069-a765-e02538f4c911" class="image"><a href="5%20%E9%BB%84%E9%87%91%E6%9C%BA%E5%88%B6%2010e772f741c080a49adcef33bbde1f75/image%201.png"><img src="5%20%E9%BB%84%E9%87%91%E6%9C%BA%E5%88%B6%2010e772f741c080a49adcef33bbde1f75/image%201.png"/></a></figure><h3 id="16c772f7-41c0-8001-b06e-f5dbed4495da" class="">利率机制</h3><p id="16c772f7-41c0-8027-bf6a-e38532f8193a" class="">6.1 中美利率倒挂</p><p id="16c772f7-41c0-8055-9221-f4446597f8d0" class="">利率是金融资产定价的核心</p><p id="16c772f7-41c0-8024-8c51-d81d225f571b" class="">利率是牵动汇率的重要因素</p><p id="16c772f7-41c0-80b5-baa2-d6da378b37cd" class="">利率代表着这个国家的综合收益率，无风险收益率</p><p id="16c772f7-41c0-8000-a61f-de5c51320a47" class="">信用越高，利率越低。例如美国信用高，向海外借钱的利率低。</p><p id="16c772f7-41c0-80ce-8640-faa0ff47d179" class="">2022.4 中美利率倒挂</p><figure id="16c772f7-41c0-803f-974b-d3923a57dc97" class="image"><a href="6%20%E5%88%A9%E7%8E%87%E6%9C%BA%E5%88%B6%2011e772f741c080558c2ff31bb6c9c4fe/image.png"><img src="6%20%E5%88%A9%E7%8E%87%E6%9C%BA%E5%88%B6%2011e772f741c080558c2ff31bb6c9c4fe/image.png"/></a></figure><p id="16c772f7-41c0-80ca-9c49-c2990c2e6c2b" class="">2020.8被迫降息，应对疫情带来的股市的恐慌</p><p id="16c772f7-41c0-80af-b34c-e3961c3c9b1e" class="">2022.3加息很猛，因为之前错了加息的最好时期</p><p id="16c772f7-41c0-8043-b552-c409073a0a27" class="">美国加息，为了降通胀‘回流资金接盘股市</p><p id="16c772f7-41c0-802b-910d-d7dec25ff4da" class="">中国当时在利率在下降阶段</p><p id="16c772f7-41c0-8020-9ba8-f64cdf595997" class="">6.2 利率周期与经济周期</p><p id="16c772f7-41c0-800d-8482-eede213e6826" class="">中美利率倒挂对经济产生作用：</p><p id="16c772f7-41c0-8007-9f62-d7935ac95d86" class="">全球吃利息差的国际资金就会向美元流动</p><p id="16c772f7-41c0-8005-932b-ffbab7bf9458" class="">人民币资金外流，承受压力</p><p id="16c772f7-41c0-8033-a62b-da5c95712aa6" class="">加息对美国两个方面的预期：</p><p id="16c772f7-41c0-808c-8b80-fff1e8b63fe1" class="">全球资金回流接美股（但资金是否回流决定权不在美国，而在全球的投资人）</p><p id="16c772f7-41c0-80b1-a457-d172be42516c" class="">例如在2022年中，俄乌冲突，让美国加息对经济抑制了，尤其对于消费的影响，沃尔玛销售额大跌。销售占美国经济的80%，因此消费出现下跌，意味着，美国经济出现实质性的衰退。</p><p id="16c772f7-41c0-807a-93ca-c5bfe9efc822" class="">考研美联储：</p><p id="16c772f7-41c0-808f-9fe9-f1847c0d1618" class="">是否要继续温和加息，让货币慢慢下降，但不能让经济（gdp，股市）降温太快。</p><p id="16c772f7-41c0-80ff-97ac-c2000e942aa5" class="">最坏的状况：如果断崖式下跌，美国经济就会出现紊乱，就要买黄金。</p><p id="16c772f7-41c0-8013-991b-c3b7ab55167b" class="">6.3利率对股市的影响</p><p id="16c772f7-41c0-8030-aa0d-f46ee189cdf4" class="">为什么加息对股市产生负面影响</p><p id="16c772f7-41c0-8079-ab47-e21653773d7d" class="">利率在金融定价中起到怎么样的核心作用</p><p id="16c772f7-41c0-8051-8c71-e73aa734e6d3" class="">金融资产定价三个大逻辑（以股票为例子）：</p><p id="16c772f7-41c0-8037-9a0d-d5f07f1de8b5" class="">1.宏观层面</p><p id="16c772f7-41c0-80e8-8a5d-d604ec9965a8" class="">一个国家的gdp，经济数据好不好</p><p id="16c772f7-41c0-80fd-819c-c47624a8345e" class="">2.企业的基本面</p><p id="16c772f7-41c0-8043-b0e5-f97ac5eb0905" class="">企业是否赚钱，增长高吗，利润率高吗，行业壁垒高吗，股东回报率高吗，资产回报率高吗</p><p id="16c772f7-41c0-8091-8b13-ecac238d7f41" class="">3.市场的交易情绪</p><p id="16c772f7-41c0-80fc-b38a-d9345a7678ba" class="">容易受到宏观因素影响</p><p id="16c772f7-41c0-8034-8988-fe731d969fbe" class="">这三个因素都受到了资金的成本的影响，就是利率。</p><p id="16c772f7-41c0-80d6-b3c9-d06a3d2819b2" class="">所有金融资产的定价，现金流折现法，例如一个房子，未来带来的租金，卖掉房子赚到的钱，都折现到现在，得到的折现率的现值就是她现在的价值。</p><p id="16c772f7-41c0-8034-a852-df2484721076" class="">这里面最重要的是折现率，折现率和无风险利率有关。无风险利率就是国家的国债利率。国家的国债利率上升了，折现率就上升了，金融资产价值下降（为什么？）。</p><ol type="1" id="16c772f7-41c0-8012-91ca-fb0e92540c1b" class="numbered-list" start="1"><li></li></ol><p id="16c772f7-41c0-8018-b383-da42f486f226" class="">另一个角度，加息代表国家的经济过热。对于交易情绪的影响，</p><p id="16c772f7-41c0-8081-b180-c88c75d251a0" class="">6.4 美债利率对中国的影响</p><p id="16c772f7-41c0-8032-af08-c6ca2ee31154" class="">利率和资产价格是反向关系</p><p id="16c772f7-41c0-80bd-b074-c0b299554f88" class="">本来是，美国加息，中国加息，中国股市下跌。</p><p id="16c772f7-41c0-80ab-aaa9-f12b82d19c8f" class="">分析框架：</p><p id="16c772f7-41c0-8063-99d6-ff1f70ba3c87" class="">1.宏观传导机制</p><p id="16c772f7-41c0-8043-b215-ed7d06897e84" class="">从两个国家层面经济周期的变化</p><p id="16c772f7-41c0-80e9-b9ca-f167921d538d" class="">美国加息正在进入衰退</p><p id="16c772f7-41c0-80d1-a9af-e3b95c4e8abd" class="">中国周期更长</p><p id="16c772f7-41c0-8063-92b3-f4d7f120a082" class="">中国进入降息通道，要走出衰退</p><p id="16c772f7-41c0-808a-9428-d5413f53d31b" class="">中美倒挂，中美周期错位</p><p id="16c772f7-41c0-806b-9aa4-e089344bd764" class="">中美经济背离</p><p id="16c772f7-41c0-808c-9fc3-fb555d7f2048" class="">大部分时候中美周期同步</p><p id="16c772f7-41c0-80a4-ab98-ec3be0ed2f6c" class="">2.资金面</p><p id="16c772f7-41c0-80c8-8f5e-d80259ff5f47" class="">全球资金是否从中国抽走</p><p id="16c772f7-41c0-80e9-a6f3-f449f83a9759" class="">一般是套利</p><p id="16c772f7-41c0-8096-8689-c1c9d6dfefca" class="">但是中国国债市场是自己玩的</p><p id="16c772f7-41c0-80a0-b5f2-ee4ac0370c75" class="">虽然资金会流出中国，但是国债利率不会变</p><p id="16c772f7-41c0-80ed-bfea-e8987af2aec5" class="">国债是从资金层面可以交易的利率</p><p id="16c772f7-41c0-8047-8042-ced9ac02d18b" class="">3.情绪传导机制</p><p id="16c772f7-41c0-80e8-870a-f7d65566d77f" class="">北向资金，占市值4.5%，对于资金面影响不大。对情绪影响更大。</p><p id="16c772f7-41c0-80b9-8848-cda02faa3dc4" class="">另外北向资金，也不是净流出，而是进进出出。</p><p id="16c772f7-41c0-8003-a90d-e33ea5460b7c" class="">中国的问题是，央行降息带来的货币增量在金融体系里面，没有进入实体经济当中，原因就是情绪面。例如，利息降了，房贷利率降了，但是大家不买房了。信心不强的时候，降息只能造成通胀。</p><p id="16c772f7-41c0-803b-820a-e8203eef9678" class="">总结，美国加息，对中国的影响主要是情绪面，宏观和资金面影响较小。</p><h2 id="16c772f7-41c0-807b-af94-e136f33f77f0" class="">7 投资框架</h2><p id="16c772f7-41c0-80a5-ae1f-cfff8845c9be" class="">7.1框架的重要性</p><p id="16c772f7-41c0-80fd-ac26-c627fc5c3a67" class="">没有框架</p><p id="16c772f7-41c0-8008-9ce5-eba0bcdab071" class="">难以稳定盈利 “一次盈利狗都行，长期盈利神都难”</p><p id="16c772f7-41c0-807b-aff0-e8d02188a25d" class="">无结果，无评估，无框架</p><p id="16c772f7-41c0-80d5-a185-c609146cdd5e" class="">不会做 What(买什么) When(择时) H（怎么买卖） “代码不值钱，关键是时机”</p><p id="16c772f7-41c0-80e1-b70f-da0528d187b5" class="">焦虑感 无需盯盘 每周回顾</p><p id="16c772f7-41c0-803e-b383-f29d79086f2e" class="">7.2-4投资目标，方法，建仓，调仓</p><p id="16c772f7-41c0-80a9-b759-c74d1909627e" class="">“放风筝”</p><p id="16c772f7-41c0-802e-afcb-cce19d15b5f5" class="">1.目标</p><p id="16c772f7-41c0-802b-a4d4-c9680f1da37e" class="">认识自我</p><p id="16c772f7-41c0-8044-be72-e3a844f013c8" class="">风险/收益：每年最大回撤10%（单个止损20%）/最大10%年化收益</p><p id="16c772f7-41c0-8072-a3c5-fff1f029f746" class="">年龄/配置：30以下，不支持投资; 30以上</p><p id="16c772f7-41c0-80a8-8c2b-f4935a43df39" class="">认识市场</p><p id="16c772f7-41c0-80f6-a934-e22f6db6f34f" class="">高估市场-错过机会</p><p id="16c772f7-41c0-805f-a826-d0930dac07f6" class="">低估市场-过度交易</p><p id="16c772f7-41c0-8057-a6fa-f24ff6ab81aa" class="">2.方法</p><p id="16c772f7-41c0-801b-aedc-f9b4917d324f" class="">趋势投资-择时</p><p id="16c772f7-41c0-80d2-bf88-d387c0e7f876" class="">中美竞争 GDP</p><p id="16c772f7-41c0-8016-a11c-caadec8d2dd1" class="">中等收入跨越（参考日韩）</p><p id="16c772f7-41c0-8052-a6b8-d7f7cbd3fff3" class="">房市转移到股市（资金池）</p><p id="16c772f7-41c0-80d1-bcb3-e23ccbb41338" class="">注册制</p><p id="16c772f7-41c0-802a-a904-e6f87ee81b98" class="">人民币国际化</p><p id="16c772f7-41c0-80e7-8278-de7dba18c934" class="">价值投资-择行业</p><p id="16c772f7-41c0-80e7-8ee1-f85d0be3c755" class="">低估值</p><p id="16c772f7-41c0-80b4-9ef9-c832b8ef0ff7" class="">高增长</p><p id="16c772f7-41c0-80da-a69e-d9526ab4c6c1" class="">垄断利润</p><p id="16c772f7-41c0-8009-a45c-cde92c390843" class="">量化投资-择公司</p><p id="16c772f7-41c0-808b-b0d5-ed2d0bc2f0d5" class="">体系（现金流折现法）</p><p id="16c772f7-41c0-802f-bb25-fe47e99bc8c5" class="">动态（判断高低）</p><p id="16c772f7-41c0-8050-9d10-f8c3be14d0e1" class="">定量（何时买入卖出）</p><p id="16c772f7-41c0-80d9-b369-c79e10eea1ff" class="">3.建仓和调仓</p><p id="16c772f7-41c0-80fd-872c-c2db03825d4e" class="">一层</p><p id="16c772f7-41c0-803f-aa2e-cf29ef46d0ac" class="">初始：80%债券（3-5%） 20%A股（沪深300）</p><p id="16c772f7-41c0-8059-be28-c4f450148e19" class="">调仓稳定：50%债券 50%A股</p><p id="16c772f7-41c0-8081-8de7-dcffbb995718" class="">二层（如何调整，慢慢调）</p><p id="16c772f7-41c0-8098-8ff9-ef1da4cd58ff" class="">增强指数基金；行业基金；主动基金</p><p id="16c772f7-41c0-8010-829f-ed7ac7ff29ed" class="">⇒ 收益；割韭菜；抱团；信息差</p><p id="16c772f7-41c0-80b9-8251-d1ead2f84479" class="">三层</p><p id="16c772f7-41c0-80d3-80f6-cb10686798f2" class="">择时</p><p id="16c772f7-41c0-8011-96a1-c57595a7476b" class="">进攻</p><p id="16c772f7-41c0-80aa-a403-f653b76eddf1" class="">防守</p><p id="16c772f7-41c0-805e-9a26-cbbafb8de973" class="">周期</p><p id="16c772f7-41c0-801d-ad82-f806e355bcb3" class="">两个月</p><p id="16c772f7-41c0-8017-b12a-c12ce84d5b22" class="">一年</p><p id="16c772f7-41c0-807a-a8a4-e41571e2b9fa" class="">止盈止亏</p><p id="16c772f7-41c0-800d-80f7-dc2de5ebffe5" class="">禁忌：</p><p id="16c772f7-41c0-8091-801c-cf36afe443bd" class="">短线交易</p><p id="16c772f7-41c0-80e7-b7c7-e35916db0aff" class="">轻信</p><p id="16c772f7-41c0-80d9-86bc-fd9596a01ed2" class="">不止损</p><p id="16c772f7-41c0-80a7-a70e-fed0474b9c17" class="">出盈保亏</p><p id="16c772f7-41c0-8025-b2f1-d89818c12e5d" class="">只股不基</p><h2 id="16c772f7-41c0-8018-9513-e488feb8ea71" class="">8择时的方法</h2><p id="16c772f7-41c0-80e7-9033-ca642a00de8a" class="">8.1为什么要择时</p><p id="16c772f7-41c0-8047-aa58-ec0700ad635d" class="">1.股票汇报 （12.98%）= 企业盈利（11.67%） + 股息 （1.52%）+ 估值变化（-0.34%）</p><p id="16c772f7-41c0-8012-b553-feda017e3dd0" class="">企业盈利对应价格</p><p id="16c772f7-41c0-80ca-a91e-c5354e4bccec" class="">短期：k线是估值变化</p><p id="16c772f7-41c0-8022-b99e-cd620012daee" class="">2.短期波动↔长期获利</p><p id="16c772f7-41c0-8042-ab27-e421c1c4d431" class="">以5年-10年为周期</p><p id="16c772f7-41c0-808e-8551-d2b5b075b0fd" class="">没有连续三年↔熊进牛出 （市场70%亏）</p><p id="16c772f7-41c0-807e-bf62-e8b01102a6ae" class="">3.择+时工具</p><p id="16c772f7-41c0-8020-a5d5-c0d8fed4d480" class="">估值</p><p id="16c772f7-41c0-8034-a917-f90bdb61fa05" class="">恐慌指数</p><p id="16c772f7-41c0-80ee-9f86-d76f60b2744e" class="">宏观政策</p><p id="16c772f7-41c0-80f4-8d8f-f0c5b5557db4" class="">8.2估值择时法</p><p id="16c772f7-41c0-8034-ba93-c52d9707d840" class="">1.市盈率</p><p id="16c772f7-41c0-80dd-8b0c-e58ef1ae369a" class="">市盈率（Price-to-Earnings Ratio，P/E比率）是衡量股票估值的重要指标，通过将公司股价除以每股收益计算得出。它反映了投资者愿意为每1元公司盈利支付的价格，常用于判断股票是否被高估或低估。</p><p id="16c772f7-41c0-80c6-b1d6-d1887fca9610" class="">70配PE上市公司/整体公司 = 占比</p><p id="16c772f7-41c0-806b-b8b8-f90ce123d69d" class="">1.占比&lt;10% 市场低估，强买</p><p id="16c772f7-41c0-8029-9ed9-fd5b6fdfd13a" class="">2.占比 10%-20% 市场低估，可买</p><p id="16c772f7-41c0-80ed-a18e-c66d8ebc77bd" class="">3.占比&gt;45% 市场高估，必卖</p><p id="16c772f7-41c0-80b9-8da8-f0491d565902" class="">2.股债收益率法 = 1 / 股市地市盈率 - 十年国债利率</p><p id="16c772f7-41c0-8085-8fee-c66c5d64200a" class="">A股股债收益率&gt; 3%买股票</p><p id="16c772f7-41c0-80f1-a3bf-cb8cdb0c3f37" class="">A股股债收益率&lt; 0%卖股票</p><p id="16c772f7-41c0-80f8-8d2b-e8544b9d0846" class="">3.市场温度发</p><p id="16c772f7-41c0-80f4-a793-f20ae511aa34" class="">PE中位数： 31x       历史排名：11%   假设看成11°</p><p id="16c772f7-41c0-808b-8529-cef0bbd736c8" class="">市场低估   温度低于30°   三年绝对收益116%</p><p id="16c772f7-41c0-80db-9115-c974d3158a72" class="">市场中估   温度30°-70°   三年绝对收益18%</p><p id="16c772f7-41c0-8009-a318-c0b7a4170c0d" class="">市场高估   温度高于70°   三年绝对收益-21%</p><p id="16c772f7-41c0-8067-8fa4-d189b8227f4b" class="">8.3情绪择时法</p><p id="16c772f7-41c0-8015-884f-cb0aad738d8c" class="">恐惧/贪婪指数 （VIX）【A股 韭圈儿】</p><p id="16c772f7-41c0-80e6-87ea-e07d664e256d" class="">50ETF移动（kong&#x27;huang&#x27;zhi&#x27;su）</p><p id="16c772f7-41c0-8039-ad2c-ddf355e7dc21" class="">北上资金</p><p id="16c772f7-41c0-80c2-9d7b-ced4b85a470f" class="">新高比例 （股市中股价创出新高地股票占整个的比例）</p><p id="16c772f7-41c0-805b-ac6a-f5eace3dbe0c" class="">300指期货：开（多）贴（空）</p><p id="16c772f7-41c0-8059-950a-f619bf3ddb78" class="">股债回报差（股债收益率法 = 1 / 股市地市盈率 - 十年国债利率）</p><p id="16c772f7-41c0-808d-83db-ce567e6147ab" class="">融资占比（越高越贪婪）</p><p id="16c772f7-41c0-8035-930e-edfd60280596" class="">A股贪婪指数</p><p id="16c772f7-41c0-8018-9d7d-e2aab444332c" class="">80-100极贪婪 卖</p><p id="16c772f7-41c0-808d-b79d-ed210b794e97" class="">20-80分歧 等</p><p id="16c772f7-41c0-802e-8253-ea4bd72ebe44" class="">0-20极恐惧 买</p><p id="16c772f7-41c0-80a4-990c-d908d2118738" class="">VIX怎么看？根据上面</p><p id="16c772f7-41c0-8058-aee2-cb1e21bde3e7" class="">8.4宏观择时法上-宏观法</p><p id="16c772f7-41c0-80eb-9fc9-dff8d5fa54b1" class="">中美逆周期：</p><p id="16c772f7-41c0-8042-943b-f166192ecdf0" class="">中美难题（不可能三角）</p><p id="16c772f7-41c0-8054-aacf-fe8989e71873" class="">中 经济增长（最重要）→ 货币扩张（杠杆） → 汇率 → 经济增长</p><p id="16c772f7-41c0-8078-9c12-c86c70095ec1" class="">逻辑：货币扩张是为了刺激经济，但货币扩张会推高金融风险，金融风险会反过来影响经济增长； 货币扩张要降息，降息资金就会回到美国，汇率就要承担压力</p><p id="16c772f7-41c0-806e-999e-d26d838f733d" class="">美 经济增长（最重要）→ 紧缩（加息缩表） → 通胀 → 经济增长</p><p id="16c772f7-41c0-80bf-b50f-cfe72bf68b3a" class="">逻辑：美国首要是要治疗通胀，因此要加息，反过来会影响美国的盈利性，因此美股压力大。</p><p id="16c772f7-41c0-805e-a996-d3492acf367c" class="">中美逆周期历史：</p><p id="16c772f7-41c0-807a-85a3-cc2cad36e691" class="">2015</p><p id="16c772f7-41c0-800e-9a22-cd1b584d6d84" class="">中 大A熔断→棚改+放水</p><p id="16c772f7-41c0-80fd-a0eb-df176fd0126c" class="">美 加息见顶</p><p id="16c772f7-41c0-8054-add1-e6e4c032dc61" class="">结果：16-17同时度过危机；PMI&gt;85</p><p id="16c772f7-41c0-8068-a261-e0cd95b01f14" class="">2018</p><p id="16c772f7-41c0-8033-958a-f90eff0d619d" class="">中 大A 跌1000</p><p id="16c772f7-41c0-800f-a8de-cac372cd69e2" class="">2019 （加上疫情）</p><p id="16c772f7-41c0-8069-a603-c02462c9e977" class="">美 中断加息 → 改为降息</p><p id="16c772f7-41c0-8075-8318-c30e92e9df02" class="">结果： 2020 美国熔断</p><p id="16c772f7-41c0-8054-88e3-de26954982a4" class="">2022 （疫情+俄乌冲突）</p><p id="16c772f7-41c0-8071-a77b-c0fd9744ddcc" class="">中 12万亿放水</p><p id="16c772f7-41c0-8093-9ee9-cdb9ad3b2640" class="">美 加息</p><p id="16c772f7-41c0-808a-9e9a-effaf0b2ee3b" class="">结果：中美经济形势都差；中PMI=49； 美PMI=56</p><p id="16c772f7-41c0-80b8-bf7a-f116e5a796ec" class="">note: PMI（制造业景气指数）</p><p id="16c772f7-41c0-808c-8f64-eda831dc0cf1" class="">市场交易预期：</p><p id="16c772f7-41c0-8039-af9e-e78d9808b3fa" class="">现在坏—之后好？更坏？</p><p id="16c772f7-41c0-8021-b7dd-ec2522a9d0cf" class="">2022年中美遇到共同的问题</p><ol type="1" id="16c772f7-41c0-809b-96ef-d9a0b4ba16c2" class="numbered-list" start="1"><li>供应冲击</li></ol><ol type="1" id="16c772f7-41c0-8039-bacd-ec38e5aafef0" class="numbered-list" start="2"><li>能源冲击（俄乌冲突导致）<p id="16c772f7-41c0-8072-b5bb-c6b7a5f661a1" class="">美元指数上涨，大宗商品会下降，但能源例外。</p><p id="16c772f7-41c0-80b9-8648-c559b95658ad" class="">大宗商品分为能源和非能源（金属）</p></li></ol><ol type="1" id="16c772f7-41c0-8066-bb1b-dbaf1e456d44" class="numbered-list" start="3"><li>全球加息</li></ol><p id="16c772f7-41c0-8090-9b0d-c60e21901d6e" class="">2022结论A股：</p><p id="16c772f7-41c0-802e-8357-e11d42726a00" class="">短（6-12个月）：震荡</p><p id="16c772f7-41c0-8046-b72d-c2b71b5e8cc8" class="">中（1-3年）：建仓</p><p id="16c772f7-41c0-803b-90ae-e0b4da410f3e" class="">长（10年）：坚定做A吗，未来A必定接受房地产</p><h2 id="16c772f7-41c0-8052-87f4-fb9c2ec1fb14" class="">9 入门投资心法（更适合投资5年以下）</h2><p id="16c772f7-41c0-804a-aa09-d3bd45a22161" class="">9.1 入门配置心法</p><p id="16c772f7-41c0-8093-ad61-d9b314bd5820" class="">巴菲特赌局50w美金对赌华尔街，巴菲特只买标普</p><p id="16c772f7-41c0-80f8-a5f3-db31893ee01b" class="">9.2指数基金的跑赢原理</p><p id="16c772f7-41c0-801c-a2e9-e8859d1ce20f" class="">指数基金不是指数</p><p id="16c772f7-41c0-80fd-a652-e1847773aede" class="">只有3-4%的股票能赚钱</p><table id="16c772f7-41c0-8052-af55-f2e9d93192c1" class="simple-table"><tbody><tr id="16c772f7-41c0-807a-9e03-ed3a79963f25"><td id=";H?}" class=""></td><td id="\urD" class="">十年年化收益</td></tr><tr id="16c772f7-41c0-8080-a65c-ecc01e609663"><td id=";H?}" class="">科创</td><td id="\urD" class="">7.7%</td></tr><tr id="16c772f7-41c0-8041-b935-f7210472748b"><td id=";H?}" class="">前3名</td><td id="\urD" class="">45%</td></tr><tr id="16c772f7-41c0-80b6-9f10-e63f4ffa527b"><td id=";H?}" class="">前20名</td><td id="\urD" class="">20%</td></tr><tr id="16c772f7-41c0-80ae-9ad1-d1ba087ba762"><td id=";H?}" class="">后80名</td><td id="\urD" class="">0.6%</td></tr></tbody></table><p id="16c772f7-41c0-80a0-bde6-cd5775bbfb3e" class="">指数基金：</p><p id="16c772f7-41c0-80d3-ba0c-fb0b9c89ed40" class="">头部效应（优选）</p><p id="16c772f7-41c0-80f4-917a-eb3cb14ae3c2" class="">持仓效应（稳稳持有，避免散户高买低卖）</p><p id="16c772f7-41c0-80bc-a771-e7752a998dfb" class="">分散效应</p><p id="16c772f7-41c0-80b6-b808-d1c4fb802100" class="">全A股 前3%的公司的盈利 等于其他所有的总和</p><p id="16c772f7-41c0-805b-86a1-fd07ff58086a" class="">全美股 前4%的公司的盈利 等于其他所有的总和</p><p id="16c772f7-41c0-8073-b102-c88be98da0f1" class="">9.3如何选择指数基金</p><p id="16c772f7-41c0-800d-8e94-c95a488fe001" class="">宽指 vs. 行业（消费，新能源）</p><p id="16c772f7-41c0-8019-8c85-e3d371882c91" class="">30%底仓（宽指）+20%卫星（行业）</p><table id="16c772f7-41c0-80ce-98b1-d331912e19ff" class="simple-table"><tbody><tr id="16c772f7-41c0-80ee-93d1-d154b1359659"><td id="mX:y" class=""></td><td id="MaHs" class="">3年</td><td id="JI&gt;P" class="">5年</td><td id="`dLf" class="">10年</td></tr><tr id="16c772f7-41c0-80d5-969a-db3a0689325d"><td id="mX:y" class="">沪深300</td><td id="MaHs" class="">12.67</td><td id="JI&gt;P" class="">16.92</td><td id="`dLf" class="">55.38</td></tr><tr id="16c772f7-41c0-804f-b1c6-f410f566fbd2"><td id="mX:y" class="">中证500</td><td id="MaHs" class="">23.75</td><td id="JI&gt;P" class="">6.48</td><td id="`dLf" class="">61.94</td></tr><tr id="16c772f7-41c0-802b-b094-d1d4d360c9f9"><td id="mX:y" class="">中证1000</td><td id="MaHs" class="">20.78</td><td id="JI&gt;P" class="">-8.17</td><td id="`dLf" class="">65.29</td></tr></tbody></table><p id="16c772f7-41c0-8052-aa2a-c9be73e5400e" class="">沪深300是前300（大盘）； 中证500是300后500名（中小成长）； 中证1000是再往后的800到1800的公司</p><p id="16c772f7-41c0-80d0-832d-cccba68bc672" class="">沪深300：稳</p><p id="16c772f7-41c0-8078-a16f-d23df42761e9" class="">中证500：稳+成长</p><p id="16c772f7-41c0-807a-9a61-c27a67f53d7e" class="">不选中证1000波动太高</p><p id="16c772f7-41c0-800c-bf4c-d83135519f88" class="">沪深300特质：</p><p id="16c772f7-41c0-8042-b137-d4f7046bbd33" class="">1.高估值回归，不利</p><p id="16c772f7-41c0-8072-b9b5-fcf3272a8b29" class="">2.高成长进入，有利</p><p id="16c772f7-41c0-8085-9932-d3b8a54924db" class="">中证500：</p><p id="16c772f7-41c0-80fb-be4b-ff263e12e959" class="">有出有进</p><p id="16c772f7-41c0-808f-97b9-f95f8ceeeb91" class="">9.4红利指数基金</p><p id="16c772f7-41c0-80d4-a699-f8c28cef585d" class="">红利指数底层逻辑：市场上股息率最高的流动性又比较好的前100的公司</p><p id="16c772f7-41c0-802e-9ffd-d62dac828a5b" class="">为什么值得投资？</p><p id="16c772f7-41c0-8007-be60-f76130d881b9" class="">央妈货币目标：金融市场稳定</p><p id="16c772f7-41c0-80d5-90ab-d24d7bf0695c" class="">国策：共同富裕</p><p id="16c772f7-41c0-800f-bf2e-f5a1683eca78" class="">逻辑例子：龙头企业→垄断→盈余收购上下游公司；横向收购→影响金融稳定</p><p id="16c772f7-41c0-80de-a9c0-c7782f43a465" class="">股票应该作为资产而非赌场，因此股票收益除了上下波动的价格差之外，股利才是资产性收入</p><p id="16c772f7-41c0-80bc-91b0-d4be1fb6bd64" class="">高分红，能够降低企业估值，维护稳定性</p><figure id="16c772f7-41c0-8075-ac46-ced66ffe7fc4" class="image"><a href="9%20%E5%85%A5%E9%97%A8%E6%8A%95%E8%B5%84%E5%BF%83%E6%B3%95%20160772f741c080b7af91fb3dffb94e49/image.png"><img src="9%20%E5%85%A5%E9%97%A8%E6%8A%95%E8%B5%84%E5%BF%83%E6%B3%95%20160772f741c080b7af91fb3dffb94e49/image.png"/></a></figure><p id="16c772f7-41c0-8043-bd91-ed1fee380f2a" class="">结论：</p><p id="16c772f7-41c0-802d-a4a7-daafe20f6931" class="">沪深300</p><p id="16c772f7-41c0-80c2-9d66-f9db11749935" class="">中证500</p><p id="16c772f7-41c0-80b4-aef8-da821df4d2df" class="">红利指数</p><p id="16c772f7-41c0-802a-a61e-c2a5468f6fb0" class="">可以1.傻瓜买入 2. 定投 3. 择时</p><p id="16c772f7-41c0-8000-b91f-e40d20258271" class="">9.5基金定投策略</p><p id="16c772f7-41c0-8025-b3a4-f5fe62ce7c36" class="">定投（定期定额）</p><p id="16c772f7-41c0-8049-9504-fd10c0ff5b9b" class="">被动择时：解决追涨杀跌</p><p id="16c772f7-41c0-8071-b056-f441bb4b995c" class="">降低持仓成本：</p><p id="16c772f7-41c0-8089-a22a-cbed466d3db6" class="">2015投资基金申购数据</p><p id="16c772f7-41c0-8057-bc43-faf5dd107a34" class="">2015Q2新高   Q3-28.4% 导致申购少于赎回 Q4大涨</p><table id="16c772f7-41c0-8038-bc22-d1f52b4191c5" class="simple-table"><tbody><tr id="16c772f7-41c0-80d8-abb7-ccda16d57278"><td id="^bN~" class="">基金</td><td id="g_]&lt;" class="">Y1</td><td id="MLy[" class="">Y2</td><td id="VH[|" class="">Y3</td><td id="O`rS" class="">收益</td></tr><tr id="16c772f7-41c0-80e4-aef8-c125ac919798"><td id="^bN~" class="">A</td><td id="g_]&lt;" class="">100</td><td id="MLy[" class="">110</td><td id="VH[|" class="">120</td><td id="O`rS" class="">120</td></tr><tr id="16c772f7-41c0-8061-a6cf-d15cc03859a1"><td id="^bN~" class="">B</td><td id="g_]&lt;" class="">100</td><td id="MLy[" class="">75</td><td id="VH[|" class="">100</td><td id="O`rS" class="">100</td></tr><tr id="16c772f7-41c0-8088-a901-ee67a88924da"><td id="^bN~" class="">定投A</td><td id="g_]&lt;" class="">100</td><td id="MLy[" class="">100</td><td id="VH[|" class=""></td><td id="O`rS" class="">229</td></tr><tr id="16c772f7-41c0-80f3-a9b3-ccd531831c1e"><td id="^bN~" class="">定投B</td><td id="g_]&lt;" class="">100</td><td id="MLy[" class="">100</td><td id="VH[|" class=""></td><td id="O`rS" class="">233</td></tr></tbody></table><p id="16c772f7-41c0-8092-9d69-da63981d5dea" class="">定投方法：</p><p id="16c772f7-41c0-8069-9bcc-c64b2e7a2c94" class="">1.时间3-10年，至少3-5年</p><p id="16c772f7-41c0-80d6-b6e9-c7ff69415fcc" class="">2.频率：周或月</p><p id="16c772f7-41c0-8003-8f66-f904c80dabff" class="">3.金额固定，不要扣扣嗖嗖</p><h2 id="16c772f7-41c0-8054-9ee9-ff3cf1608045" class="">10 中级投资心法（更适合投资5年以上）</h2><p id="16c772f7-41c0-80b8-ae79-e121cb1340f7" class="">10.1 行业投资的三个阶段</p><p id="16c772f7-41c0-8066-8246-fdc3c561e34c" class="">心法“道”</p><p id="16c772f7-41c0-8067-ae8d-e35348828e6a" class="">长期主义</p><p id="16c772f7-41c0-802d-a926-cdd24e462fd3" class="">学习主义（用逻辑创造收益）</p><p id="16c772f7-41c0-8036-b99a-fbe6f448eaac" class="">利他主义</p><p id="16c772f7-41c0-80ae-9598-d9e868e930ea" class="">心法“术”</p><p id="16c772f7-41c0-806b-9850-ecd005aa70c3" class="">配置（优先指数；增强→行业etf；最后才是个股（α））</p><p id="16c772f7-41c0-803b-87ce-de7abc15b7c7" class="">择时（β）</p><p id="16c772f7-41c0-80cb-a662-d2f52c1f03be" class="">择资产</p><p id="16c772f7-41c0-8047-96a6-fe3d35720e7e" class="">投资三个阶段</p><p id="16c772f7-41c0-80ac-9d1d-c65296901226" class="">1.炒题材（龙头战法）</p><p id="16c772f7-41c0-8065-a26a-e436d65b68e0" class="">问题：需要盯盘，没有盘感，不要做短期主义；拿不住：不知道什么时候卖；心理波动→内耗→情绪化→非理性交易</p><p id="16c772f7-41c0-80b8-9377-c8b740157f2a" class="">note：做短线技术不适合每个人：需要天赋，勤奋，自律</p><p id="16c772f7-41c0-8000-b2a4-c739c4e139e6" class="">2.价值投机（用逻辑）</p><p id="16c772f7-41c0-8028-9c61-e3014e86952c" class="">但是用短期看到逻辑</p><p id="16c772f7-41c0-80e8-b585-ca1df76fa9c6" class="">价值投机不适合所有人，更应该关注长期</p><p id="16c772f7-41c0-8068-951a-e8d7099c3865" class="">3.价值投资（放风筝）</p><p id="16c772f7-41c0-8051-a86f-fce74183a8c0" class="">好风口+好资产</p><p id="16c772f7-41c0-8087-818d-e656596b6139" class="">三个做法：</p><p id="16c772f7-41c0-801a-ae77-d4aa2a523bd8" class="">细分行业（不超过3个重点）</p><p id="16c772f7-41c0-8024-a106-de3855efa455" class="">分析（行业利润率，行业壁垒，竞争结构，龙头公司财报）</p><p id="16c772f7-41c0-8067-b34b-fe1c9f1561e4" class="">跟踪跨越周期的个股</p><p id="16c772f7-41c0-8050-b943-dc2b6c39e1eb" class="">10.2 行业配置</p><p id="16c772f7-41c0-8066-bb18-c451f3dfbc53" class="">指数基金 60%</p><p id="16c772f7-41c0-80c3-84c8-d59fa25c98af" class="">行业指数ETF 30%</p><p id="16c772f7-41c0-80e2-9e90-ebe3eb124011" class="">个股 10%</p><p id="16c772f7-41c0-80d1-ad9d-d4d90c476c1b" class="">行业板块四类板块（30%）</p><table id="16c772f7-41c0-805c-ad6c-f19b23896e49" class="simple-table"><tbody><tr id="16c772f7-41c0-8072-9c74-def48a086e5b"><td id="xg}?" class="">成长 10%</td><td id="YpI|" class="">价值</td></tr><tr id="16c772f7-41c0-80fb-9524-f60adb52f246"><td id="xg}?" class="">消费 10%</td><td id="YpI|" class="">周期</td></tr></tbody></table><p id="16c772f7-41c0-80c1-884c-ed27d457b092" class="">剩下10%价值投机</p><p id="16c772f7-41c0-8071-86c4-f485d5eb9b33" class="">投机要靠短期强逻辑</p><p id="16c772f7-41c0-80f3-a441-d805013ab94c" class="">供需不平衡</p><p id="16c772f7-41c0-805f-ae56-f0a09c3c4076" class="">政策强拉</p><p id="16c772f7-41c0-80a8-b01b-d3630ade746d" class="">估值错杀</p><p id="16c772f7-41c0-80a5-93e7-f4889def86ff" class="">上面的板块配比不是固定的，根据周期来轮动</p><p id="16c772f7-41c0-80e3-9fcf-d70639c49a88" class="">10.3 看清行业的生命周期</p><figure id="16c772f7-41c0-8040-804f-cb4578d0c54c" class="image"><a href="10%20%E4%B8%AD%E7%BA%A7%E6%8A%95%E8%B5%84%E5%BF%83%E6%B3%95%EF%BC%88%E6%9B%B4%E9%80%82%E5%90%88%E6%8A%95%E8%B5%845%E5%B9%B4%E4%BB%A5%E4%B8%8A%EF%BC%89%20168772f741c080eba543e8ac588fade0/image.png"><img src="10%20%E4%B8%AD%E7%BA%A7%E6%8A%95%E8%B5%84%E5%BF%83%E6%B3%95%EF%BC%88%E6%9B%B4%E9%80%82%E5%90%88%E6%8A%95%E8%B5%845%E5%B9%B4%E4%BB%A5%E4%B8%8A%EF%BC%89%20168772f741c080eba543e8ac588fade0/image.png"/></a></figure><p id="16c772f7-41c0-80d9-88ab-f1bce3ddad43" class="">2022：</p><p id="16c772f7-41c0-806d-9d67-c69eb75d49fd" class="">导入：规模不大，技术不确定性，渗透率&lt;20%</p><p id="16c772f7-41c0-807d-ad12-ee5e8788782e" class="">成长：市场证明，马太效应马上到来</p><p id="16c772f7-41c0-80f5-b95d-c8c90fec5429" class="">成熟: 渗透率&gt;50%</p><p id="16c772f7-41c0-80c0-8c4c-f456180b985a" class="">衰退</p><p id="16c772f7-41c0-80f4-8f7e-e6cc03d1cf8b" class="">10.4 行业成长核心要素</p><p id="16c772f7-41c0-802e-bebc-f312df387bd7" class="">2022年中</p><table id="16c772f7-41c0-80a0-8a7a-c76b42685f5d" class="simple-table"><tbody><tr id="16c772f7-41c0-807a-a5b9-f4f69fd1c07b"><td id="D?SC" class=""></td><td id="a`SB" class="">导入期</td><td id="Tf=i" class="">成长期</td><td id="\O|A" class="">成熟期</td><td id="z|oc" class="">衰退期</td></tr><tr id="16c772f7-41c0-801b-abec-fd02aed90aa9"><td id="D?SC" class="">核心要素</td><td id="a`SB" class="">市场空间</td><td id="Tf=i" class="">渗透率，增速</td><td id="\O|A" class="">议价能力，利润率，复购率，集中度</td><td id="z|oc" class="">新技术，新市场，新应用</td></tr><tr id="16c772f7-41c0-80c2-9624-f1fc2f8f3342"><td id="D?SC" class=""></td><td id="a`SB" class="">元宇宙（×），web3（×），新能源车（✔）</td><td id="Tf=i" class="">新车： 1.5%-26%；</td><td id="\O|A" class=""></td><td id="z|oc" class=""></td></tr><tr id="16c772f7-41c0-8014-b45d-c09debc9b753"><td id="D?SC" class="">云计算：10%-36%</td><td id="a`SB" class="">白酒</td><td id="Tf=i" class="">家电</td><td id="\O|A" class=""></td><td id="z|oc" class=""></td></tr></tbody></table><p id="16c772f7-41c0-80f8-9efd-cbb392af55c9" class="">10.5 行业联动和产业转移</p><p id="16c772f7-41c0-80ce-a0e0-c7611fc1607a" class="">上游-价格：原油，金属</p><p id="16c772f7-41c0-80e0-b65d-c9284126db26" class="">上游容易受到宏观经济流动性的影响；</p><p id="16c772f7-41c0-803f-b2e9-f0706169d5ab" class="">美国加息周期造成大宗商品价格回落，原因是流动性差，造成对下游需求对大宗商品的需求减弱</p><p id="16c772f7-41c0-806a-b6fe-f6e5b054f3a2" class="">中游-利润：钢铁，水泥，石化</p><p id="16c772f7-41c0-802f-9fd7-f72e3dfd9de2" class="">要用上游原材料，提供给下游零部件，需要下游订单；</p><p id="16c772f7-41c0-8022-b26a-d356f4971bfe" class="">他的例如是景气度指标，利润上涨取决于能不能吸收上游价格上涨，和上游的博弈，上游又收到宏观影响，产生传导机制</p><p id="16c772f7-41c0-8031-b620-cd1ce9bfea78" class="">下游-需求：消费，汽车</p><p id="16c772f7-41c0-805d-a7b3-fe776f21fe9c" class="">行业联动：空间上拉开→一个产业到多个产业</p><p id="16c772f7-41c0-8045-82a5-c3ec0628d190" class="">产业转移：是从时间上拉广</p><p id="16c772f7-41c0-807f-bc45-e09f154a198a" class="">高科技产业转移</p><p id="16c772f7-41c0-80f8-b995-eefab32eee20" class="">欧美→日韩→台湾→中国</p><p id="16c772f7-41c0-8030-a6b1-cb9089651f9a" class="">例子：</p><p id="16c772f7-41c0-80f8-8e30-cca07b343722" class="">之前的手机</p><p id="16c772f7-41c0-80ff-920e-f44331277036" class="">声学：立讯科技</p><p id="16c772f7-41c0-80af-977c-d9a3de1c8201" class="">天线</p><p id="16c772f7-41c0-80bf-92b0-c06ee0256dbe" class="">现代从手机→汽车</p><p id="16c772f7-41c0-803c-983e-ce4bf40f966a" class="">芯片</p><p id="16c772f7-41c0-800f-aaaf-d9a7c18d8981" class="">美国小院高墙阻碍中国</p><h2 id="16c772f7-41c0-8093-bfae-fe02aae6a044" class="">11 高级投资心法（更适合投资5年以上）</h2><p id="16c772f7-41c0-8003-be3d-db94e9e5cb18" class="">11.1 八大估值方法综述</p><p id="16c772f7-41c0-80ad-944d-f74da044f288" class="">好公司=好股票？</p><p id="16c772f7-41c0-8045-a0bf-d23a377f5703" class="">不等于</p><p id="16c772f7-41c0-80a9-ad61-e657ff9bbcf2" class="">好公司</p><p id="16c772f7-41c0-80dd-b9ae-d22f072a11a6" class="">行业成长性</p><p id="16c772f7-41c0-80ce-833e-eb75267efbed" class="">市场渗透率</p><p id="16c772f7-41c0-80c2-a9cf-d27b8baab106" class="">定价权</p><p id="16c772f7-41c0-80cb-866d-c46600cc999a" class="">复购率</p><p id="16c772f7-41c0-8050-b41a-db2ac798fe9a" class="">好公司所在的行业是一个进入快速增长的行业</p><p id="16c772f7-41c0-80a6-87a1-d29b7102ca7f" class="">等</p><p id="16c772f7-41c0-803c-969d-eb91e9904872" class="">是否就要去买了？</p><p id="16c772f7-41c0-800b-a476-cb98242fbf9c" class="">好股票</p><p id="16c772f7-41c0-8066-9749-f47ec6eadebc" class="">估值是否合理：股价什么决定</p><p id="16c772f7-41c0-802b-ba72-c22735403ec4" class="">价值=股价？</p><p id="16c772f7-41c0-806b-9215-da00d52b7394" class="">内在价值：BS,PL,CF,分红</p><p id="16c772f7-41c0-80e4-936d-e86379d9e00d" class="">股价（和公司价值是回归的关系，股价会围绕价值波动）：盈利，分红，估值（预期，信息）</p><p id="16c772f7-41c0-80b5-81d4-c4a949fec502" class="">11.2 相对估值法</p><p id="16c772f7-41c0-80c0-8f1c-f11e0fe06992" class="">绝对估值法（优势：不需要认为判断，只需要历史； 缺点：是静态量，没有反应出市场对他的情绪；适合房地产，银行）</p><p id="16c772f7-41c0-80e9-9579-ea9f9d54b5aa" class="">股息贴现法 DDM</p><p id="16c772f7-41c0-8060-998b-da484a84dbc3" class="">资产净值法 NA</p><p id="16c772f7-41c0-8080-8e06-e4fa938a92a7" class="">现金流折现 DCF</p><p id="16c772f7-41c0-8002-8f77-c2f446795334" class="">相对估值法</p><p id="16c772f7-41c0-8055-b893-c488e580c318" class="">市盈率 PE （市盈率希望公司有稳定的盈利性，一个企业亏损上市就不适合市盈率法，更适合市销率；）</p><p id="16c772f7-41c0-805f-b477-cf47eabdd182" class="">市净率 PB</p><p id="16c772f7-41c0-8031-9fbf-d1fe34c8fe01" class="">企业价值估算法EV/EBITDA （一个企业如果有大量的银行负债，银行也分享了公司盈利创造的收益，因此如果要反映公司真实的盈利状况，需要把债权及其他因素人这部分价值加回去）</p><p id="16c772f7-41c0-8086-a110-f32a4a9975ed" class="">市销率 PS</p><p id="16c772f7-41c0-80ca-bb34-e5d59339f038" class="">可比公司法</p><p id="16c772f7-41c0-80f2-87e6-f71a0c3c0372" class="">市盈率法 P/E</p><p id="16c772f7-41c0-80b0-bbc7-ec12a7c69043" class="">（市值/股数）/（盈利/股数）=股价/盈利每股 = P/E</p><p id="16c772f7-41c0-8017-9b67-e5da4a2e1870" class="">P/E</p><p id="16c772f7-41c0-8036-9714-df0f8baeaad0" class="">静态市盈率：P/过去一年全年的盈利</p><p id="16c772f7-41c0-80c0-92bd-c49a6058adca" class="">例如：现在2022.8，用的是2021年全年</p><p id="16c772f7-41c0-8099-bac2-ed3d21c10db2" class="">动态市盈率：P/当年的预测值</p><p id="16c772f7-41c0-80d4-bbb1-e2dafb9c9ec0" class="">例如：现在2022.8，用的是2022年当年预测值</p><p id="16c772f7-41c0-80b6-b2a5-e42f2910edf7" class="">滚动市盈率（TTM市盈率）：P/最近四个季度</p><p id="16c772f7-41c0-80f4-b83d-f64f6d0c4998" class="">例如：现在2022.8，用的是过去连续四个季度</p><p id="16c772f7-41c0-800d-9dba-fbffd546007a" class="">note：</p><p id="16c772f7-41c0-809a-8e3c-f9268cd9ca6d" class="">美股看的更多的是动态市盈率；</p><p id="16c772f7-41c0-809f-bdf5-c5a3e63453c6" class="">不同行业的市盈率不同</p><p id="16c772f7-41c0-8030-8d1a-d525b90754e7" class="">PEG 市盈率和增长的比例：</p><p id="16c772f7-41c0-8049-ae2e-d91a9a0fc89e" class="">例子</p><table id="16c772f7-41c0-8094-b34f-da6564e11c69" class="simple-table"><tbody><tr id="16c772f7-41c0-800c-81c3-d7b1551e9674"><td id="ZM|v" class=""></td><td id="TWdF" class="">P/E</td><td id="P][T" class="">增长率</td><td id="gsKH" class="">PEG</td></tr><tr id="16c772f7-41c0-80fb-9352-ea5e395858ae"><td id="ZM|v" class="">比亚迪</td><td id="TWdF" class="">300x</td><td id="P][T" class="">150%</td><td id="gsKH" class="">2x</td></tr><tr id="16c772f7-41c0-8084-b92f-ff815587a1a1"><td id="ZM|v" class="">吉利</td><td id="TWdF" class="">30x</td><td id="P][T" class="">1%</td><td id="gsKH" class="">30x</td></tr></tbody></table><p id="16c772f7-41c0-8027-a799-f90c2928ac5d" class="">PEG调整更加合适</p><p id="16c772f7-41c0-8088-9f25-c23a61bc51f1" class="">市销法 P/S</p><p id="16c772f7-41c0-8063-850a-d63f1534420d" class="">P/S = 股价/销售额</p><p id="16c772f7-41c0-80c0-b222-d63d38aa1753" class="">适用于公司现在在盈利状况，风险投资领域，盈利波动的领域，对于二手市场不多</p><p id="16c772f7-41c0-80bc-accb-ff24ecc7698c" class="">例如用一个公司五倍从销售额来估值：</p><p id="16c772f7-41c0-808b-ae5d-e5048d472aae" class="">P = 5 x 5000w = 2.5 亿</p><p id="16c772f7-41c0-808b-9b98-e12d92db1581" class="">如果投资2500w，相当于公司让出10%股份</p><p id="16c772f7-41c0-8019-9a03-de5ef213de0e" class="">市净率 P/B</p><p id="16c772f7-41c0-803a-8370-c20816f0b06a" class="">P/S = 股价/净资产</p><p id="16c772f7-41c0-807f-8d3b-e320adadb576" class="">更适用于大型资产企业</p><p id="16c772f7-41c0-809b-8646-c5da8d8b4758" class="">例如</p><ol type="1" id="16c772f7-41c0-805f-91e3-d8ae51dbaa24" class="numbered-list" start="1"><li>基金： P/投资价值之和</li></ol><ol type="1" id="16c772f7-41c0-80f2-91bc-ffa1209ec80f" class="numbered-list" start="2"><li>房产</li></ol><ol type="1" id="16c772f7-41c0-8032-9aa8-fe81d3451d9a" class="numbered-list" start="3"><li>矿业</li></ol><p id="16c772f7-41c0-8073-a199-f555aef1fda3" class="">企业价值估算法 EV/EBITDA</p><p id="16c772f7-41c0-80c7-89f9-e484b89145f2" class="">EV （企业价值）/EBITDA<strong>税息折旧及摊销前利润</strong>（盈利+利润+折旧/摊销+税收）</p><p id="16c772f7-41c0-8042-bca9-e46da2135bf0" class="">EV/EBITDA 一般小于市盈率</p><p id="16c772f7-41c0-80e5-874b-dec859d5c464" class="">note: P是股权价值， EV是市值（股权价值）+债权价值</p><p id="16c772f7-41c0-8002-805c-cb7980bd4638" class="">常用于制造业，制造业有大量银行借款利息高，有大量资产，折旧高</p><p id="16c772f7-41c0-8013-96f3-f88c96f81dc8" class="">做美股要看这个</p><p id="16c772f7-41c0-8053-9ed5-c4a62476b079" class="">自由现金流法</p><p id="16c772f7-41c0-80e3-81a5-e33783cc2a66" class="">11.3 绝对估值法</p><p id="16c772f7-41c0-805d-906e-c93e0c43bd80" class="">股息贴现法</p><p id="16c772f7-41c0-809f-af8a-d76fd678b435" class="">分红</p><p id="16c772f7-41c0-8089-80c7-f0976c230f7e" class="">note：股息/股价 &lt;2%（中国）</p><p id="16c772f7-41c0-804b-890c-d849544c5d3b" class="">一期模型：P0=（D（当年分红）+P1（未来一年的股价））/（1+r（贴现率：每年达到多少满意，很多是10%））</p><p id="16c772f7-41c0-8062-8b19-ffc76c697f12" class="">例子：茅台 假设当年股价2000，预测未来上涨5%，下一年股价到2100。以及 2%股息。D（分红）=2% x 2000（股价）=40</p><p id="16c772f7-41c0-80ac-985b-facab27f7665" class="">（2% x 2000+2100）/（1+10%）= 1945</p><p id="16c772f7-41c0-80ae-ba60-e371960ba1bd" class="">高于现在的股价2000，说明茅台未来可能没有5%的增长，并且股息率太低</p><p id="16c772f7-41c0-80f3-bc3b-e6245847848a" class="">多期模型：P0=（D x （1+g（增长率）））/（r-g）</p><p id="16c772f7-41c0-803d-841f-fdaf2ee324b3" class="">（21.6+（1+8%））/（10%-8%）= 1188</p><p id="16c772f7-41c0-800d-9043-d613998b19df" class="">远低于现价</p><p id="16c772f7-41c0-8055-8164-e3295c06b6f0" class="">不能说市场错，而是说茅台可能不适合股息折现法，因为分红太低。</p><p id="16c772f7-41c0-80b3-bf64-ea17a9bcd559" class="">总结：股息贴现法适合股息高，稳定/高分红的公司（例如能源石油）</p><p id="16c772f7-41c0-80e1-bece-da84dae8b870" class="">note：中国公司用这些方法算，都不太行，因为中国a股的资产不够优质</p><p id="16c772f7-41c0-80e1-afbc-df51ee39c93c" class="">净资产价值法 NA</p><p id="16c772f7-41c0-80df-bcb0-ef78e1a8306e" class="">房产公司资产负债表</p><figure id="16c772f7-41c0-80e0-a20c-c857588e0e6c" class="image"><a href="11%20%E9%AB%98%E7%BA%A7%E6%8A%95%E8%B5%84%E5%BF%83%E6%B3%95%EF%BC%88%E6%9B%B4%E9%80%82%E5%90%88%E6%8A%95%E8%B5%845%E5%B9%B4%E4%BB%A5%E4%B8%8A%EF%BC%89%2016c772f741c080698b92ed75f36a5c07/image.png"><img src="11%20%E9%AB%98%E7%BA%A7%E6%8A%95%E8%B5%84%E5%BF%83%E6%B3%95%EF%BC%88%E6%9B%B4%E9%80%82%E5%90%88%E6%8A%95%E8%B5%845%E5%B9%B4%E4%BB%A5%E4%B8%8A%EF%BC%89%2016c772f741c080698b92ed75f36a5c07/image.png"/></a></figure><p id="16c772f7-41c0-8078-ac9e-ec8f0271d3da" class="">净资产价值就是把他账面价格进行调整</p><p id="16c772f7-41c0-8065-bbef-d4d594160ba1" class="">调整了：</p><p id="16c772f7-41c0-80b5-8cc4-e32579f864bd" class="">商誉：无形资产，收购的溢价，例子收购一个账面上为1000万的楼盘，实际付了2000万，多出来的1000万就是商誉</p><p id="16c772f7-41c0-80b9-8473-f0bb11a0513b" class="">开发中物业：开放中的物业是按照开发成本计算的资产，但是最后可能要烂尾了，所以要给他计提，折价准备</p><p id="16c772f7-41c0-80a4-9cf7-d4dcf7f5a875" class="">投资物业：买了一个房产，可能涨了，做增加处理</p><p id="16c772f7-41c0-8083-9c07-e202ad94b2e5" class="">最后来看，总资产降低了20%。</p><p id="16c772f7-41c0-8023-a9a7-fee5079a71bb" class="">总结：一般在收购并购公司的时候用，如果算出来的价值低于市场价值，说明被低估了</p><p id="16c772f7-41c0-8077-ac06-c7f2971827b1" class="">11.4 DCF现金流贴现法</p><p id="16c772f7-41c0-8011-bd4e-c7d7d4815bb2" class="">所有方法里最准确，受约束最小的</p><p id="16c772f7-41c0-8073-b0e4-e2dea5a0f796" class="">公司真正的价值来源于公司能够创造的现金流</p><p id="16c772f7-41c0-8023-94b3-f18950df632e" class="">比算盈利更好</p><p id="16c772f7-41c0-8084-9b96-d47963786adc" class="">现金流更难造假</p><p id="16c772f7-41c0-807e-b045-ca21314a8a26" class="">对于不发股息的公司也有效</p><p id="16c772f7-41c0-80ec-94f0-d6a41979ffe9" class="">方法逻辑：把未来的价值折现到当年+永续残值</p><p id="16c772f7-41c0-804a-809f-da3496e307eb" class="">公司自由现金流 = 息税前利润（EBIT）+ 折旧摊销 - 资本支出（固定资产，长投）- 运营资本（存货，应收账款，应付账款）</p><p id="16c772f7-41c0-804b-9845-f14c6e058c8f" class="">自由现金流是，公司出去对外投资扩张，除去公司支付给债权的利息等，公司可以自由分配的钱</p><p id="16c772f7-41c0-80db-9711-fd6045c05c42" class="">WACK（公司加权资本成本）= 股权成本 x 股权比例（70%） + 银行利息（8%）x 债权比例（30%）</p><p id="16c772f7-41c0-80db-aae0-f62388918cb3" class="">用自由现金流wack折现得到的是公司价值</p><p id="16c772f7-41c0-8020-998e-cfa418283e3f" class="">最后 EV（公司价值） -净负债 = 股权价值</p><p id="16c772f7-41c0-80cd-b8ee-c37af9fcdf32" class="">股权价值/股数=股价</p><h2 id="16c772f7-41c0-808f-9f52-c8ffee7bf5cc" class="">12 当下形势下的中国机会和世界机会 （2022）</h2><p id="16c772f7-41c0-802c-a936-ff35e61ab30d" class="">中国资产机会</p><p id="16c772f7-41c0-80d1-ae92-d20787ea1e18" class="">新能源</p><p id="16c772f7-41c0-80a7-88ca-ddd3bbf27c2c" class="">风能</p><p id="16c772f7-41c0-8033-ae65-e068fb978afb" class="">光能</p><p id="16c772f7-41c0-80ac-b22a-f2e60f025d65" class="">输电</p><p id="16c772f7-41c0-80dc-bcff-e4cee162cb8d" class="">储电</p><p id="16c772f7-41c0-8051-a949-f0a1e6b2a9df" class="">新信息</p><p id="16c772f7-41c0-8076-8e4d-eb010ef7c361" class="">科技硬件</p><p id="16c772f7-41c0-80c2-8381-dd96d81c56e3" class="">科技软件</p><p id="16c772f7-41c0-8036-9524-c128b0527995" class="">云计算/AI</p><p id="16c772f7-41c0-800c-b225-ce8becfa348b" class="">大数据</p><p id="16c772f7-41c0-8042-80d2-e4b24afb6eee" class="">note：to B</p><p id="16c772f7-41c0-80f3-b26f-fb90f9c87fdf" class="">新制造</p><p id="16c772f7-41c0-8013-8a4a-c9c32623f5cd" class="">芯片</p><p id="16c772f7-41c0-805e-ac7d-fc9d04746f4a" class="">国产替代</p><p id="16c772f7-41c0-80b6-af2f-c9457214ec5c" class="">军工</p><p id="16c772f7-41c0-80ac-9aff-cea9fcb0a016" class="">老制造更新</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,691 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>5 黄金机制</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="10e772f7-41c0-80a4-9adc-ef33bbde1f75" class="page sans"><header><h1 class="page-title">5 黄金机制</h1><p class="page-description"></p></header><div class="page-body"><h2 id="10e772f7-41c0-800b-8f10-d393a82beae8" class="">5.1 黄金的前世今生</h2><ul id="10e772f7-41c0-8012-a6c3-c0c3effa1acd" class="bulleted-list"><li style="list-style-type:disc"><strong>黄金是最古老的货币形式之一</strong><p id="10e772f7-41c0-80d8-a5e4-d0a3deb50b6e" class="">作为一种长期保值的资产，黄金历来被用作财富的象征。</p></li></ul><ul id="10e772f7-41c0-80b5-b4bb-c8249eb8cff6" class="bulleted-list"><li style="list-style-type:disc"><strong>乱世存黄金</strong><p id="10e772f7-41c0-8096-948d-ce3242c4292d" class="">在社会动荡和经济不稳定的时期，黄金常被视为安全的避险资产。</p><p id="10e772f7-41c0-80c9-8b18-da63279a9ac3" class="">
+</p></li></ul><h2 id="10e772f7-41c0-8051-8f47-cc7b098fb735" class="">5.2 国际金价的影响因素</h2><h3 id="10e772f7-41c0-800a-950d-e74a8cd966d1" class="">1. <strong>美元走势</strong></h3><ul id="10e772f7-41c0-8071-9ec0-c9a217245bc5" class="bulleted-list"><li style="list-style-type:disc"><strong>美元走强，黄金走弱</strong>通常情况下，美元和黄金价格呈反向关系，美元升值时，黄金价格下跌。</li></ul><ul id="10e772f7-41c0-805e-8e46-ed48232564c4" class="bulleted-list"><li style="list-style-type:disc"><strong>无风险的美债影响黄金</strong>美国国债作为无风险资产，吸引投资者，从而压制黄金价格。</li></ul><h3 id="10e772f7-41c0-8002-b504-fc645544b55b" class="">2. <strong>非农数据</strong></h3><ul id="10e772f7-41c0-807e-8f27-e5af289380cd" class="bulleted-list"><li style="list-style-type:disc"><strong>非农数据反映美国经济</strong>非农业就业人口数据是反映美国经济健康状况的重要指标。</li></ul><ul id="10e772f7-41c0-8025-aed1-c100c8568f3c" class="bulleted-list"><li style="list-style-type:disc"><strong>非农数据好，美元强，黄金跌</strong>当非农数据表现良好，美元走强，黄金价格通常下跌。</li></ul><h3 id="10e772f7-41c0-80c7-99ca-cfdff3f0323e" class="">3. <strong>股票市场</strong></h3><ul id="10e772f7-41c0-80c4-833e-d5dae44fb7e8" class="bulleted-list"><li style="list-style-type:disc"><strong>股票与黄金呈反向关系</strong>当经济形势向好，股票市场上涨，投资者更倾向于股票，黄金价格通常下跌。</li></ul><h3 id="10e772f7-41c0-8076-af6d-df8cc536f3e2" class="">4. <strong>通货膨胀</strong></h3><ul id="10e772f7-41c0-803d-88fb-d529d5ceb05b" class="bulleted-list"><li style="list-style-type:disc"><strong>通胀与黄金呈正向关系</strong>货币滥发导致通货膨胀，黄金作为保值资产，其价格会上升。例如，货币与黄金的比例从1:1变为9:1时，黄金价格会相应上涨。</li></ul><h3 id="10e772f7-41c0-807c-9d04-f784e7348005" class="">5. <strong>国际局势</strong></h3><ul id="10e772f7-41c0-8043-a6f9-d18201f271d4" class="bulleted-list"><li style="list-style-type:disc"><strong>局势动荡时黄金上涨</strong>当全球政治和经济局势动荡时，投资者倾向于购买黄金以避险，导致黄金价格上涨。</li></ul><h3 id="10e772f7-41c0-8038-9d8a-fa22ec7753e6" class="">总结</h3><ul id="10e772f7-41c0-80bf-b5a5-c743a8c32714" class="bulleted-list"><li style="list-style-type:disc">黄金价格的主要影响因素是美元的走势。</li></ul><p id="111772f7-41c0-80cf-9113-d372627cd75d" class="">
+</p><h3 id="111772f7-41c0-80d7-b293-c004f4c29bc0" class="">5.3 黄金的历史收益率</h3><p id="111772f7-41c0-8072-b813-f85f426cbe8a" class="">黄金在不同历史阶段的收益率存在较大差异，主要由于以下原因：</p><h3 id="111772f7-41c0-8090-9303-f4341cf5648d" class="">收益率对比</h3><ul id="111772f7-41c0-80d5-a494-c4235d127d42" class="bulleted-list"><li style="list-style-type:disc"><strong>1970-2022年</strong> vs <strong>1980-2022年</strong>：黄金在这两个时间段的收益率差异显著。</li></ul><h3 id="111772f7-41c0-80f8-aa73-e99394fabec6" class="">原因分析</h3><ol type="1" id="111772f7-41c0-806b-83ac-e99c9af6e582" class="numbered-list" start="1"><li><strong>布雷顿森林体系的瓦解</strong><ul id="111772f7-41c0-8012-9c78-f91c5679988c" class="bulleted-list"><li style="list-style-type:disc">1971年布雷顿森林体系瓦解，美国停止了美元与黄金的固定兑换比例（美元脱钩黄金），导致黄金价格迅速飙升。</li></ul><ul id="111772f7-41c0-802a-8094-da7705f662ab" class="bulleted-list"><li style="list-style-type:disc">这使得<strong>1970-2022年</strong>的黄金收益率显著高于之后的时间段。</li></ul></li></ol><ol type="1" id="111772f7-41c0-803c-8a2d-e89dd0049584" class="numbered-list" start="2"><li><strong>第二次大变动（1979-1980年）</strong><ul id="111772f7-41c0-80e3-9512-c6fd7f7b3499" class="bulleted-list"><li style="list-style-type:disc"><strong>能源危机</strong>：1979年的全球能源危机推高了通胀和黄金需求。</li></ul><ul id="111772f7-41c0-8032-85b0-cd4794dea0cc" class="bulleted-list"><li style="list-style-type:disc"><strong>地缘政治动荡</strong>：伊朗革命和萨达姆·侯赛因的崛起导致石油市场剧烈波动，推动黄金成为避险资产，价格再次大幅上涨。</li></ul></li></ol><p id="111772f7-41c0-8006-b837-fbdaae67a4f3" class="">这些事件共同影响了黄金在不同历史阶段的收益表现。</p><p id="111772f7-41c0-8025-a489-d371de402723" class="">
+</p><h3 id="111772f7-41c0-8017-92ae-c7e65af24657" class="">5.4 美元指数的逻辑（2022年）</h3><p id="111772f7-41c0-8033-b288-e5f826c4cccf" class="">在2022年中，美元强势上涨，达到20年来的新高，指数突破<strong>104</strong>。主要原因如下：</p><h3 id="111772f7-41c0-8039-9b7c-d5524e71dfc8" class="">1. 美联储加息</h3><ul id="111772f7-41c0-80b8-9008-f333b298bca9" class="bulleted-list"><li style="list-style-type:disc"><strong>加息</strong>导致美国资产的收益率上升，吸引全球资金回流美国，推高美元需求。</li></ul><ul id="111772f7-41c0-80a2-8cbd-f104ed6fa969" class="bulleted-list"><li style="list-style-type:disc">这种资金的“回流潮汐”促使美元上涨。</li></ul><h3 id="111772f7-41c0-8049-91f5-ed301193fe22" class="">2. 能源危机</h3><ul id="111772f7-41c0-8008-8e19-df074517be20" class="bulleted-list"><li style="list-style-type:disc">全球面临能源短缺危机，但美国受影响较小。</li></ul><ul id="111772f7-41c0-8015-8e33-c84ee7cc07a7" class="bulleted-list"><li style="list-style-type:disc"><strong>美国成为能源进出口国</strong>，尤其是液化天然气的出口强势增长。美国与欧洲签订了长期供应合同，进一步支撑了美元汇率。</li></ul><h3 id="111772f7-41c0-80de-90c7-db9cd00e1920" class="">3. 美国的政策立场</h3><ul id="111772f7-41c0-8095-b500-dff07d56c6d8" class="bulleted-list"><li style="list-style-type:disc">过去，美国采取<strong>弱势美元政策</strong>，以促进出口、增强商品的全球竞争力。</li></ul><ul id="111772f7-41c0-80c8-a6b7-e8e38d6d0e79" class="bulleted-list"><li style="list-style-type:disc">但如今，由于<strong>通货膨胀</strong>，美国必须维持<strong>强势美元</strong>，以抑制进口商品价格上涨，从而降低通胀，吸引资金回流美国市场。</li></ul><h3 id="111772f7-41c0-8094-963e-c3ec909f0a19" class="">未来展望</h3><ul id="111772f7-41c0-8030-8061-f2526476985a" class="bulleted-list"><li style="list-style-type:disc">随着<strong>加息周期结束</strong>，市场可能进入降息阶段，逐步淘汰低效产能，推动经济结构调整。</li></ul><p id="111772f7-41c0-80a8-9682-fb8054b803dd" class="">
+</p><h3 id="111772f7-41c0-807d-8f31-db46db7751fd" class="">5.5 黄金一飞冲天的机会</h3><h3 id="111772f7-41c0-80b0-b9cf-f1b39d3e7f78" class="">俄乌冲突与黄金暴涨的关系</h3><ul id="111772f7-41c0-80be-bc0c-de5e22861ef4" class="bulleted-list"><li style="list-style-type:disc"><strong>俄乌冲突</strong>和疫情导致的<strong>供应链问题</strong>、能源危机，并不是推动黄金<strong>结构性上涨</strong>的核心原因。</li></ul><ul id="111772f7-41c0-8067-998e-e7aa550f5723" class="bulleted-list"><li style="list-style-type:disc">黄金的<strong>结构性上涨</strong>主要依赖于<strong>美元的走势</strong>，尤其是美元进入<strong>负利率</strong>状态时，黄金的投资吸引力大幅上升。</li></ul><h3 id="111772f7-41c0-8094-9779-e6b98a7c0bbf" class="">黄金真正上涨的关键：美元负利率</h3><ul id="111772f7-41c0-80d4-8af3-f63f68ec6b87" class="bulleted-list"><li style="list-style-type:disc"><strong>负利率</strong>意味着投资美国国债的实际收益为负，这使得黄金成为无风险且有吸引力的资产。</li></ul><p id="111772f7-41c0-80aa-a2f4-eff8c5feb0c2" class="">
+</p><ul id="111772f7-41c0-8038-81bf-e8f52796d17b" class="bulleted-list"><li style="list-style-type:disc"><strong>历史回顾</strong>：在1980年代，美国曾出现负利率，当时黄金价格大幅上涨。</li></ul><ul id="111772f7-41c0-80f0-80ec-e0ca96c9d532" class="bulleted-list"><li style="list-style-type:disc"><strong>当前是否可能出现负利率？</strong><ul id="111772f7-41c0-8041-b2ea-c0ba39a9d9db" class="bulleted-list"><li style="list-style-type:circle">这取决于全球局势，尤其是俄乌冲突的演变和美国经济的表现。</li></ul></li></ul><h3 id="111772f7-41c0-8012-9d61-cefd6c253aee" class="">达里欧的分析：俄乌冲突的影响</h3><ul id="111772f7-41c0-80cc-8f92-c0580c8dee9d" class="bulleted-list"><li style="list-style-type:disc">如果<strong>俄罗斯赢得冲突</strong>，可能有几个全球性影响：<ol type="1" id="111772f7-41c0-8088-8ef1-f2259633ca00" class="numbered-list" start="1"><li><strong>控制乌克兰的战略地区</strong>。</li></ol><ol type="1" id="111772f7-41c0-8082-b400-de9b951314c0" class="numbered-list" start="2"><li>俄罗斯经济不会遭受毁灭性打击，<strong>GDP下降控制在15%以内</strong>。</li></ol><ol type="1" id="111772f7-41c0-80df-8a60-d504130e0cd2" class="numbered-list" start="3"><li>俄罗斯重返国际政治舞台，回到<strong>G20峰会</strong>。</li></ol></li></ul><ul id="111772f7-41c0-805c-b3e9-eefa62159528" class="bulleted-list"><li style="list-style-type:disc">如果这些条件不满足，可能会导致更严重的冲突，甚至全球<strong>冷战局面</strong>，这对全球经济产生巨大冲击。</li></ul><h3 id="111772f7-41c0-80d4-8cde-ea72caa91a14" class="">美国的经济形势与黄金上涨</h3><ul id="111772f7-41c0-80ef-99f5-d65225749cba" class="bulleted-list"><li style="list-style-type:disc"><strong>2022年</strong>美国处于经济<strong>衰退边缘</strong>，采取<strong>加息</strong>和<strong>缩表</strong>政策，吸引全球资金回流美国，支撑美股和美债。</li></ul><ul id="111772f7-41c0-806c-9749-cf2af2cfa716" class="bulleted-list"><li style="list-style-type:disc">如果美国未能实现<strong>经济软着陆</strong>，将导致：<ol type="1" id="111772f7-41c0-80ba-b3eb-c62efb7ad7d7" class="numbered-list" start="1"><li><strong>美国债务继续扩大</strong>，最终可能导致信用危机。</li></ol><ol type="1" id="111772f7-41c0-800d-ba54-c5fc49f2a7d3" class="numbered-list" start="2"><li><strong>降息</strong>政策的极端情况下，可能引发<strong>负利率</strong>，这将为黄金提供巨大的上涨机会。</li></ol></li></ul><p id="111772f7-41c0-8051-ad1a-d37537668386" class="">
+</p><p id="111772f7-41c0-80ad-a07d-d2d44b65248c" class="">
+</p><h3 id="111772f7-41c0-8070-86ed-f45d7e22eadf" class="">5.6 黄金的投资方式对比</h3><figure id="111772f7-41c0-8067-8ad5-eac7bff34918" class="image"><a href="5%20%E9%BB%84%E9%87%91%E6%9C%BA%E5%88%B6%2010e772f741c080a49adcef33bbde1f75/image.png"><img style="width:2162px" src="5%20%E9%BB%84%E9%87%91%E6%9C%BA%E5%88%B6%2010e772f741c080a49adcef33bbde1f75/image.png"/></a></figure><figure id="111772f7-41c0-8083-aa80-f821902c13aa" class="image"><a href="5%20%E9%BB%84%E9%87%91%E6%9C%BA%E5%88%B6%2010e772f741c080a49adcef33bbde1f75/image%201.png"><img style="width:2231px" src="5%20%E9%BB%84%E9%87%91%E6%9C%BA%E5%88%B6%2010e772f741c080a49adcef33bbde1f75/image%201.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

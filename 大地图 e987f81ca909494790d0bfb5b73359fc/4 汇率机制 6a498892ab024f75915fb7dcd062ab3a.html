@@ -1,0 +1,691 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>4 汇率机制</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6a498892-ab02-4f75-915f-b7dcd062ab3a" class="page sans"><header><h1 class="page-title">4 汇率机制</h1><p class="page-description"></p></header><div class="page-body"><h2 id="de35ca9f-4381-4140-a243-5f7768f6583b" class="">4.1 汇率定价</h2><p id="a83b272e-4581-42ae-95a0-58dec9356857" class="">在跨国资金流动中，汇率是一个关键因素。汇率的变动对购买外国商品、资产投资和国家综合实力的表现都有重要影响。</p><h3 id="a6c6bd5c-064b-4d98-a43f-fdc55ae65adc" class="">汇率的三个作用：</h3><ol type="1" id="146e04cc-38ac-4b22-a4f5-4fabdd45a3a1" class="numbered-list" start="1"><li><strong>购买外国商品</strong><ul id="ab36210a-98d0-4ad9-b5a0-5e5fdc2334f2" class="bulleted-list"><li style="list-style-type:disc">根据购买力平价理论，同样的商品在国内外价格应该接近，长期来看，不应该有大的差价。如果存在差价，贸易商会从价格便宜的国家购入商品，并在价格高的国家售出，导致价格逐渐趋同。</li></ul></li></ol><ol type="1" id="596937f5-4841-4d7d-b5d1-0cec2f173931" class="numbered-list" start="2"><li><strong>购买资产</strong><ul id="67ec567e-2238-4c96-8ef3-cfb7be332732" class="bulleted-list"><li style="list-style-type:disc">投资海外资产时，资本输入国家会吸引外汇流入，这种资金流动影响汇率。</li></ul><ul id="a421dc61-abf5-43f2-93d4-c8d99a63f95b" class="bulleted-list"><li style="list-style-type:disc">海外投资收益的计算遵循<strong>利率平价</strong>理论：两个国家的项目收益率加上汇率变动应该相等。即，两个国家之间的利率差异应该与两国货币汇率的变动相对应。</li></ul><ul id="72c29cea-aaa3-4579-baf1-dea881b6f1ef" class="bulleted-list"><li style="list-style-type:disc">例如，美国加息或缩减资产负债表时，美国的无风险收益率上升。如果中国的收益率不变，资金将流向美国，推动美元升值，人民币贬值。</li></ul></li></ol><ol type="1" id="8341154c-8603-4c0b-b7ed-86f8cc5f7a2c" class="numbered-list" start="3"><li><strong>国家综合实力决定汇率的表现</strong><ul id="728abbff-7789-4ed0-bd51-aa950d48303c" class="bulleted-list"><li style="list-style-type:disc">最根本的汇率决定因素是一个国家的综合实力。中国曾采用固定汇率制度，后来进行了汇改。随着综合国力增强，汇率也表现出相对的强势。</li></ul><ul id="5adef766-9493-4519-bffc-ab67c93486ae" class="bulleted-list"><li style="list-style-type:disc">现在，中国的汇率随市场波动而自由浮动，但国家仍通过政策手段进行引导和调控，以确保经济稳定。</li></ul></li></ol><p id="c13fc12e-4ef6-4bfd-9517-a014ce3a71b5" class="">
+</p><h2 id="34f04608-4b29-4ad8-b75f-d0855e5b2b02" class="">4.2 汇率对生活的影响</h2><ol type="1" id="d7fd1eb8-3a6f-4667-bc21-247eb57aeaea" class="numbered-list" start="1"><li><strong>进口商品物价</strong>：<ul id="e9044b38-c285-4a3a-a70e-4699d8562c3a" class="bulleted-list"><li style="list-style-type:disc">人民币贬值时，进口商品的成本增加，带来<strong>输入性通货膨胀</strong>。这使得国内进口商品价格上涨，消费者面临更高的生活成本。</li></ul></li></ol><ol type="1" id="e3be0cbd-84c8-492e-bfa2-9beaf637833a" class="numbered-list" start="2"><li><strong>资产贬值</strong>：<ul id="5e2d451c-ecfe-43fb-9fb6-46d307644c06" class="bulleted-list"><li style="list-style-type:disc">当经济形势良好时，海外资金流入中国，推动资产价格上涨。但经济不佳时，资金外逃，导致资产价格下跌。资金外逃越严重，资产价格下跌越剧烈，形成恶性循环。</li></ul><ul id="b438937d-2464-4d7f-a70f-0b4683810721" class="bulleted-list"><li style="list-style-type:disc">例如，房市因无法偿还美元债务而受影响，股市中的北向资金也可能大规模撤离。极端情况下，可能引发<strong>踩踏效应</strong>，加剧市场恐慌。</li></ul></li></ol><ol type="1" id="9211ac7b-6e01-4a68-82e4-584b614f1d77" class="numbered-list" start="3"><li><strong>进口原材料</strong>：<ul id="4cbe94f4-77e7-4674-8932-8ce5d2bd3e2f" class="bulleted-list"><li style="list-style-type:disc">汇率波动会导致进口原材料价格上涨，压缩企业利润。企业往往难以将原材料价格上涨的成本完全转嫁给消费者，这在汇率机制中被称为<strong>成本传导效应（Pass-Through）</strong>。</li></ul><ul id="75fa02ce-5020-47bb-857f-aae7d19cb598" class="bulleted-list"><li style="list-style-type:disc">中国企业的成本传导效应较弱，大多数制造业无法有效将原材料上涨的成本传递给消费者，导致企业的<strong>净利润率较低</strong>。因此，能够持续创造高增长和高资产回报率的企业相对较少，一就是因为成本上调传导给消费者能力弱，生产者定价能力低，另一方面是居民消费力不够。</li></ul></li></ol><h3 id="f955c44a-d548-47ab-bfa5-7ea9ccb2a84d" class="">总结：</h3><p id="cefdf8f1-af3a-4490-9b5c-58b0c8f213ed" class="">人民币贬值对经济的影响是多方面的。虽然在出口领域可能带来一些好处，但整体上对进口商品、资产价格和企业利润的负面影响更为显著。</p><p id="10d772f7-41c0-80ef-92a6-f94661ee17f0" class="">
+</p><p id="10d772f7-41c0-80e7-895a-e12aec157094" class="">
+</p><h2 id="10d772f7-41c0-8086-b718-cb6aeebe729c" class="">4.3 人民币贬值的因素</h2><h3 id="10d772f7-41c0-8027-9201-eb37d0cf3eb1" class="">利率平价</h3><ul id="10d772f7-41c0-8089-92c3-c1b7cf52a0dd" class="bulleted-list"><li style="list-style-type:disc">原本中国国债利率高于美国，因为作为发展中国家，需要通过较高利率吸引资金投入。</li></ul><ul id="10d772f7-41c0-801c-80a8-c0e6c166b94b" class="bulleted-list"><li style="list-style-type:disc">但在美国加息后，出现了美国利率高于中国的罕见现象，导致资本流向美国。</li></ul><h3 id="10d772f7-41c0-8022-815b-f69441c6d7e5" class="">2022年影响人民币贬值的因素</h3><ol type="1" id="10d772f7-41c0-80fb-8f11-dcbc651d783a" class="numbered-list" start="1"><li><strong>美国长短期国债利率倒挂</strong><ul id="10d772f7-41c0-805c-a494-c228c767154d" class="bulleted-list"><li style="list-style-type:disc">预示美国经济危机风险加大，资金出于避险需求流入美国。</li></ul></li></ol><ol type="1" id="10d772f7-41c0-80a6-a5e5-dd621278169f" class="numbered-list" start="2"><li><strong>疫情影响</strong><ul id="10d772f7-41c0-8011-8561-fcd2b6716309" class="bulleted-list"><li style="list-style-type:disc">国内经济受到疫情冲击，经济增长放缓，导致市场信心下降。</li></ul></li></ol><ol type="1" id="10d772f7-41c0-8049-8992-f1ec17d22645" class="numbered-list" start="3"><li><strong>供应链转移至东南亚</strong><ul id="10d772f7-41c0-80e7-9954-dca0637202aa" class="bulleted-list"><li style="list-style-type:disc">随着全球供应链调整，部分生产和投资从中国转移到东南亚，影响了中国的经济发展。</li></ul></li></ol><ol type="1" id="10d772f7-41c0-806c-bcc4-d6a70e212275" class="numbered-list" start="4"><li><strong>能源危机与俄乌冲突</strong><ul id="10d772f7-41c0-8023-8f31-fdfaa21c2220" class="bulleted-list"><li style="list-style-type:disc">国际能源价格波动和地缘政治冲突影响全球经济，增加中国进口成本，打击市场信心。</li></ul></li></ol><ol type="1" id="10d772f7-41c0-80a2-92b1-e5c4b05b0fd8" class="numbered-list" start="5"><li><strong>美元上涨</strong><ul id="10d772f7-41c0-80bd-bf4d-dfcd225ac494" class="bulleted-list"><li style="list-style-type:disc">美元指数上升，美元强势压制其他货币，包括人民币。</li></ul></li></ol><ol type="1" id="10d772f7-41c0-8037-8aca-f6b764de8e73" class="numbered-list" start="6"><li><strong>中国降息</strong><ul id="10d772f7-41c0-80b4-9065-e79dc626a3da" class="bulleted-list"><li style="list-style-type:disc">为刺激经济增长，中国采取降息措施，进一步拉大了中美利率差距，导致资金外流。</li></ul></li></ol><p id="10d772f7-41c0-80c5-b19b-debe097a0890" class="">
+</p><p id="10d772f7-41c0-8076-a27c-faa09de22ff8" class="">
+</p><h2 id="10d772f7-41c0-8013-a108-f0f196da33b7" class="">4.4 人民币升值的因素</h2><h3 id="10d772f7-41c0-805d-b628-ef1ff0b484d9" class="">人民币汇率机制</h3><ul id="10d772f7-41c0-8008-8c63-fe755471b0a7" class="bulleted-list"><li style="list-style-type:disc">我国开始实行以市场供求为基础、参考一篮子货币进行调节的有管理的浮动汇率制度，这使人民币汇率能够更加灵活地反映市场变化。</li></ul><h3 id="10d772f7-41c0-80b6-b312-e24d6836acbd" class="">2022年影响人民币升值的因素</h3><ol type="1" id="10d772f7-41c0-8009-86e4-de69f501d888" class="numbered-list" start="1"><li><strong>之前人民币涨幅过大，回调属于正常现象</strong><ul id="10d772f7-41c0-8054-9e37-d19b5a3ff960" class="bulleted-list"><li style="list-style-type:disc">近期人民币下跌，部分原因是之前涨幅过快，市场进行技术性回调。</li></ul></li></ol><ol type="1" id="10d772f7-41c0-806e-95de-ff97c3773d7a" class="numbered-list" start="2"><li><strong>快速下跌时，央行会进行调控</strong><ul id="10d772f7-41c0-80e7-a7ba-d4aecfe3b316" class="bulleted-list"><li style="list-style-type:disc">在人民币快速下跌的情况下，央行通常会进行干预或管理，保持汇率稳定。</li></ul></li></ol><ol type="1" id="10d772f7-41c0-8064-b679-d0357eccbe95" class="numbered-list" start="3"><li><strong>人民币在IMF特别提款权(SDR)中的占比提高</strong><ul id="10d772f7-41c0-8062-84ed-d668ad870efc" class="bulleted-list"><li style="list-style-type:disc">人民币在国际货币基金组织中的占比上升，反映了全球市场对人民币的信心增强。</li></ul></li></ol><ol type="1" id="10d772f7-41c0-8072-ba94-ca85ac0c2b8a" class="numbered-list" start="4"><li><strong>中国制造业的全产业链优势</strong><ul id="10d772f7-41c0-80dc-9e76-ea909c81811b" class="bulleted-list"><li style="list-style-type:disc">中国拥有完整的制造业产业链，这使得人民币具备一定的经济支撑和竞争力，增强了市场信心。</li></ul></li></ol><ol type="1" id="10d772f7-41c0-80ee-a85c-fb53d0307e5b" class="numbered-list" start="5"><li><strong>央行未立即干预，保持观望</strong><ul id="10d772f7-41c0-8096-a50d-c9b9fcb74037" class="bulleted-list"><li style="list-style-type:disc">央行观察市场变化并未直接干预，意味着对人民币的稳定性有信心。</li></ul></li></ol><ol type="1" id="10d772f7-41c0-8029-a413-fc0b7ef87526" class="numbered-list" start="6"><li><strong>吸引海外资金</strong><ul id="10d772f7-41c0-8041-846d-f5af6b650f66" class="bulleted-list"><li style="list-style-type:disc">中国市场吸引了大量海外资金流入，这也对人民币形成一定的支持力量。</li></ul></li></ol><p id="10e772f7-41c0-8065-a878-c89a28bb28f1" class="">
+</p><p id="10e772f7-41c0-80eb-9ab2-ed6e66e848cf" class="">
+</p><h2 id="10e772f7-41c0-80d3-9912-e720b3f4caad" class="">4.5 全球各国汇率看点（2022年）</h2><h3 id="10e772f7-41c0-801a-b4ff-e0c6b264e1c8" class="">1. 欧盟</h3><ul id="10e772f7-41c0-805f-b5e3-f488f1e90731" class="bulleted-list"><li style="list-style-type:disc"><strong>通货膨胀问题</strong><p id="10e772f7-41c0-8069-aa6a-c72c3720b318" class="">欧盟面临严重的通货膨胀压力，影响了欧元的稳定。</p></li></ul><ul id="10e772f7-41c0-8017-9de2-c19364272628" class="bulleted-list"><li style="list-style-type:disc"><strong>IMF降低欧元占比</strong><p id="10e772f7-41c0-8077-a1e7-da97d25752d0" class="">国际货币基金组织(IMF)在特别提款权(SDR)中降低了欧元的占比，反映了全球对欧元信心的下降。</p></li></ul><h3 id="10e772f7-41c0-80b9-9ec5-d3a5ce71e9e1" class="">2. 日本</h3><ul id="10e772f7-41c0-8068-bf5f-f5a6b93f3770" class="bulleted-list"><li style="list-style-type:disc"><strong>日元创历史新低</strong><p id="10e772f7-41c0-801a-882e-d2e5d03b2538" class="">日本经济面临老龄化问题，导致增长乏力，日元持续贬值。</p></li></ul><ul id="10e772f7-41c0-8035-b04a-dd0481e16c62" class="bulleted-list"><li style="list-style-type:disc"><strong>抛售美债、买入国债</strong><p id="10e772f7-41c0-8034-9a78-db2b35845151" class="">为维持经济稳定，日本抛售了部分美国国债，转而购买本国国债。</p></li></ul><ul id="10e772f7-41c0-8016-9ce4-cc27b9394486" class="bulleted-list"><li style="list-style-type:disc"><strong>维持零利率政策</strong><p id="10e772f7-41c0-8007-b655-d584356d6e92" class="">日本继续推行零利率政策，以刺激经济，但导致日元汇率下跌。</p></li></ul><h3 id="10e772f7-41c0-8022-9761-c99fb986d591" class="">3. 新兴市场</h3><ul id="10e772f7-41c0-80f7-b768-e62b1eaeb20d" class="bulleted-list"><li style="list-style-type:disc"><strong>美国货币政策紧缩</strong><p id="10e772f7-41c0-807e-ba90-ddb871098be5" class="">美国加息和回收流动性，导致资金从新兴市场流出。</p></li></ul><ul id="10e772f7-41c0-806b-a9e6-d8fb4e4774b4" class="bulleted-list"><li style="list-style-type:disc"><strong>新兴市场汇率下降</strong><p id="10e772f7-41c0-80e0-a55b-cacd7732575c" class="">由于资本外流和经济压力，新兴市场国家的货币普遍贬值。</p></li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
